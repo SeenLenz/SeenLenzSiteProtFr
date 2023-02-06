@@ -2,7 +2,7 @@ import { useContext, useState, useRef, useLayoutEffect } from "react";
 import { loginContext, mobileContext } from "../App";
 import signature from "../img/signature.png";
 import { NavLink } from "react-router-dom";
-import { gsap } from "gsap";
+import { motion, Variants, spring } from "framer-motion";
 
 export function Navbar() {
   const [loggedIn, setloggedIn] = useContext(loginContext);
@@ -10,14 +10,20 @@ export function Navbar() {
   const [to, setTo] = useState({ opacity: 0 });
   const [from, setFrom] = useState({ opacity: 1 });
   const boxRef = useRef();
+  const [blobState, setblobState] = useState("AboutMe");
 
   return (
     <>
       {isMobile ? (
         <header>
           <div className="navbar-desktop">
-            <div className="navbar-animation-wrapepr">
-              <div className="navbar-active-highlight" />
+            <div className="navbar-animation-wrapper">
+              <motion.div
+                className="navbar-active-highlight"
+                data-blobstate={blobState}
+                layout
+                transition={spring}
+              ></motion.div>
             </div>
             <ul className="navbar-content">
               <li className="logo">
@@ -32,12 +38,21 @@ export function Navbar() {
       ) : (
         <header>
           <div className="navbar-desktop">
-            <div className="navbar-animation-wrapepr">
-              <div className="navbar-active-highlight" />
+            <div className="navbar-animation-wrapper">
+              <motion.div
+                className="navbar-active-highlight"
+                data-blobstate={blobState}
+              ></motion.div>
             </div>
             <ul className="navbar-content">
               <li className="logo">
-                <NavLink to="/" className="navigation-route-img">
+                <NavLink
+                  to="/"
+                  className="navigation-route-img"
+                  onClick={(e) => {
+                    setblobState("home");
+                  }}
+                >
                   {" "}
                   <img src={signature} alt="React Logo" />
                 </NavLink>
@@ -48,19 +63,22 @@ export function Navbar() {
                     <NavLink
                       to="/Fspect"
                       className="navigation-route"
-                      onClick={boxRef}
+                      onClick={(e) => {
+                        setblobState("Fspect");
+                      }}
                     >
                       Fspect
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/Projects" className="navigation-route">
-                      Projects
-                    </NavLink>
-                  </li>
-                  <li>
                     {" "}
-                    <NavLink to="/AboutMe" className="navigation-route ">
+                    <NavLink
+                      to="/AboutMe"
+                      className="navigation-route"
+                      onClick={(e) => {
+                        setblobState("AboutMe");
+                      }}
+                    >
                       Aboute me
                     </NavLink>
                   </li>

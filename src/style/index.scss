@@ -44,14 +44,34 @@ body {
       // backdrop-filter: blur(20px);
       color: var(--color-grey);
 
-      .navbar-active-highlight {
+      .navbar-active-highlight[data-blobstate="home"] {
         align-self: center;
         border-radius: 50px;
         position: absolute;
-        background-color: orange;
+        background-color: red;
         height: 41px;
         width: 41px;
         transform: translateY(7px) translateX(6px);
+      }
+
+      .navbar-active-highlight[data-blobstate="Fspect"] {
+        align-self: center;
+        border-radius: 50px;
+        position: absolute;
+        background-color: green;
+        height: 37px;
+        width: 70px;
+        transform: translateY(9px) translateX(64px);
+      }
+
+      .navbar-active-highlight[data-blobstate="AboutMe"] {
+        align-self: center;
+        border-radius: 50px;
+        position: absolute;
+        background-color: blue;
+        height: 37px;
+        width: 102px;
+        transform: translateY(9px) translateX(142px);
       }
 
       .navbar-content {
@@ -80,7 +100,7 @@ body {
 
         .navigation {
           width: 100%;
-          margin: 30px;
+          margin-left: 30px;
           ul {
             padding: 0;
             list-style-type: none;
