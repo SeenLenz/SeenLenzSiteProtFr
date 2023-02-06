@@ -1,24 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import { Navbar } from "./components/Navbar";
+import React, { createContext, useState } from "react";
+import { Route } from "react-router";
+import { BrowserRouter } from "react-router-dom";
+import { Router, Routes } from "react-router-dom";
+import { Gallery } from "./components/Gallery";
+
+export const loginContext = createContext();
+export const mobileContext = createContext();
 
 function App() {
+  const [loggedIn, setloggedIn] = useState(false);
+  const [isMobile, setisMobile] = useState(window.innerWidth < 625);
+  window.addEventListener("resize", (e) => {
+    if (loggedIn) {
+      setisMobile(window.innerWidth < 500);
+    } else {
+      setisMobile(window.innerWidth < 570);
+    }
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <loginContext.Provider value={[loggedIn, setloggedIn]}>
+      <mobileContext.Provider value={isMobile}>
+        <div className="App">
+          <BrowserRouter>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Gallery />} />
+            </Routes>
+          </BrowserRouter>
+        </div>
+      </mobileContext.Provider>
+    </loginContext.Provider>
   );
 }
 
