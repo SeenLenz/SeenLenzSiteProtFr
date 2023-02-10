@@ -11,15 +11,54 @@ export function Navbar() {
   const [from, setFrom] = useState({ opacity: 1 });
   const boxRef = useRef();
   const [blobState, setblobState] = useState("AboutMe");
+
   const spring = {
     type: "spring",
     stiffness: 700,
     damping: 30,
   };
 
+  const activeStyle = { color: "white" };
+
   return (
     <>
       {isMobile ? (
+        <header>
+          <div className="navbar-mobile">
+            <motion.div className="navbar-animation-wrapper">
+              {/* <motion.div
+                className="navbar-active-highlight"
+                data-blobstate={blobState}
+                layout
+                transition={spring}
+              ></motion.div> */}
+            </motion.div>
+            <ul className="navbar-content">
+              <li className="logo">
+                <NavLink to="/" className="navigation-route-img">
+                  {" "}
+                  <img src={signature} alt="React Logo" />
+                </NavLink>
+              </li>
+              <li className="navbar-hamburger">
+                <div className="menu"></div>
+              </li>
+              <li className="account-action">
+                <ul>
+                  {loggedIn ? (
+                    "Profile"
+                  ) : (
+                    <>
+                      <li className="signin-btn">Sign Up</li>
+                      <li className="login-btn">Login</li>
+                    </>
+                  )}
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </header>
+      ) : (
         <header>
           <div className="navbar-desktop">
             <motion.div className="navbar-animation-wrapper">
@@ -32,28 +71,7 @@ export function Navbar() {
             </motion.div>
             <ul className="navbar-content">
               <li className="logo">
-                <NavLink to="/" className="navigation-route-img">
-                  {" "}
-                  <img src={signature} alt="React Logo" />
-                </NavLink>
-              </li>
-            </ul>
-          </div>
-        </header>
-      ) : (
-        <header>
-          <div className="navbar-desktop">
-            <div className="navbar-animation-wrapper">
-              <motion.div
-                className="navbar-active-highlight"
-                data-blobstate={blobState}
-                layout
-                transition={spring}
-              ></motion.div>
-            </div>
-            <ul className="navbar-content">
-              <li className="logo">
-                <a
+                <NavLink
                   to="/"
                   className="navigation-route-img"
                   onClick={(e) => {
@@ -62,32 +80,38 @@ export function Navbar() {
                 >
                   {" "}
                   <img src={signature} alt="React Logo" />
-                </a>
+                </NavLink>
               </li>
               <li className="navigation">
                 <ul>
                   <li>
-                    <a
+                    <NavLink
                       to="/Fspect"
                       className="navigation-route"
                       onClick={(e) => {
                         setblobState("Fspect");
                       }}
+                      style={({ isActive }) =>
+                        isActive ? activeStyle : undefined
+                      }
                     >
                       Fspect
-                    </a>
+                    </NavLink>
                   </li>
                   <li>
                     {" "}
-                    <a
+                    <NavLink
                       to="/AboutMe"
                       className="navigation-route"
                       onClick={(e) => {
                         setblobState("AboutMe");
                       }}
+                      style={({ isActive }) =>
+                        isActive ? activeStyle : undefined
+                      }
                     >
                       Aboute me
-                    </a>
+                    </NavLink>
                   </li>
                 </ul>
               </li>

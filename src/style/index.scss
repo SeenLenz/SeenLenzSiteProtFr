@@ -34,6 +34,93 @@ body {
     padding: 0px 20px 0px 20px;
     position: fixed;
 
+    .account-action {
+      ul {
+        padding: 0px;
+        list-style-type: none;
+        display: flex;
+        li {
+          padding: 10px;
+          transition: all 0.4s;
+        }
+        li:hover {
+          cursor: pointer;
+        }
+        .login-btn {
+          display: flex;
+          align-items: center;
+          background-color: var(--color-orange);
+          border-radius: 20px;
+          word-break: keep-all;
+          text-align: center;
+          color: var(--color-white);
+          height: 37px;
+          padding: 1em;
+        }
+        .signin-btn {
+          margin-right: 8px;
+          border: solid 1px;
+          text-align: center;
+          display: flex;
+          min-width: 90px;
+          align-items: center;
+          border-radius: 20px;
+          height: 37px;
+          padding: 1em;
+        }
+      }
+    }
+
+    .navbar-mobile {
+      margin: auto;
+      height: 55px;
+      max-width: 900px;
+      border-radius: 50px;
+      position: relative;
+      font-weight: 500;
+      background-color: var(--color-light-black);
+      color: var(--color-grey);
+
+      .navbar-content {
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        list-style-type: none;
+        display: flex;
+        height: 55px;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0px;
+        padding: 8px;
+
+        .navigation-route-img {
+          display: flex;
+          align-items: center;
+
+          img {
+            cursor: pointer;
+            width: 37px;
+            background-color: #121316;
+            border-radius: 50px;
+          }
+        }
+
+        .navbar-hamburger {
+          width: 100%;
+          display: flex;
+          align-items: flex-start;
+
+          .menu {
+            height: 37px;
+            width: 37px;
+            border-radius: 50px;
+            background-color: purple;
+            margin-left: 8px;
+          }
+        }
+      }
+    }
+
     .navbar-desktop {
       margin: auto;
       height: 55px;
@@ -42,7 +129,6 @@ body {
       position: relative;
       font-weight: 500;
       background-color: var(--color-light-black);
-      // backdrop-filter: blur(20px);
       color: var(--color-grey);
 
       .navbar-active-highlight {
@@ -83,7 +169,6 @@ body {
         justify-content: space-between;
         margin: 0px;
         padding: 8px;
-        grid-gap: px;
 
         .navigation-route-img {
           display: flex;
@@ -117,43 +202,6 @@ body {
             .navigation-route:hover {
               cursor: pointer;
               color: var(--color-white);
-            }
-          }
-        }
-
-        .account-action {
-          ul {
-            padding: 0px;
-            list-style-type: none;
-            display: flex;
-            li {
-              padding: 10px;
-              transition: all 0.4s;
-            }
-            li:hover {
-              cursor: pointer;
-            }
-            .login-btn {
-              display: flex;
-              align-items: center;
-              background-color: var(--color-orange);
-              border-radius: 20px;
-              word-break: keep-all;
-              text-align: center;
-              color: var(--color-white);
-              height: 37px;
-              padding: 1em;
-            }
-            .signin-btn {
-              margin-right: 8px;
-              border: solid 1px;
-              text-align: center;
-              display: flex;
-              min-width: 90px;
-              align-items: center;
-              border-radius: 20px;
-              height: 37px;
-              padding: 1em;
             }
           }
         }

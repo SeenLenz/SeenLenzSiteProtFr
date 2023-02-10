@@ -22,15 +22,13 @@ body {
 *,
 *::after,
 *::before {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .App {
   height: 100%;
   width: 100%;
 }
-
 .App header {
   width: 100%;
   height: 55px;
@@ -38,7 +36,84 @@ body {
   padding: 0px 20px 0px 20px;
   position: fixed;
 }
-
+.App header .account-action ul {
+  padding: 0px;
+  list-style-type: none;
+  display: flex;
+}
+.App header .account-action ul li {
+  padding: 10px;
+  transition: all 0.4s;
+}
+.App header .account-action ul li:hover {
+  cursor: pointer;
+}
+.App header .account-action ul .login-btn {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-orange);
+  border-radius: 20px;
+  word-break: keep-all;
+  text-align: center;
+  color: var(--color-white);
+  height: 37px;
+  padding: 1em;
+}
+.App header .account-action ul .signin-btn {
+  margin-right: 8px;
+  border: solid 1px;
+  text-align: center;
+  display: flex;
+  min-width: 90px;
+  align-items: center;
+  border-radius: 20px;
+  height: 37px;
+  padding: 1em;
+}
+.App header .navbar-mobile {
+  margin: auto;
+  height: 55px;
+  max-width: 900px;
+  border-radius: 50px;
+  position: relative;
+  font-weight: 500;
+  background-color: var(--color-light-black);
+  color: var(--color-grey);
+}
+.App header .navbar-mobile .navbar-content {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  list-style-type: none;
+  display: flex;
+  height: 55px;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0px;
+  padding: 8px;
+}
+.App header .navbar-mobile .navbar-content .navigation-route-img {
+  display: flex;
+  align-items: center;
+}
+.App header .navbar-mobile .navbar-content .navigation-route-img img {
+  cursor: pointer;
+  width: 37px;
+  background-color: #121316;
+  border-radius: 50px;
+}
+.App header .navbar-mobile .navbar-content .navbar-hamburger {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+}
+.App header .navbar-mobile .navbar-content .navbar-hamburger .menu {
+  height: 37px;
+  width: 37px;
+  border-radius: 50px;
+  background-color: purple;
+  margin-left: 8px;
+}
 .App header .navbar-desktop {
   margin: auto;
   height: 55px;
@@ -49,169 +124,87 @@ body {
   background-color: var(--color-light-black);
   color: var(--color-grey);
 }
-
 .App header .navbar-desktop .navbar-active-highlight {
   border-radius: 50px;
   position: absolute;
   background-color: var(--color-orange);
 }
-
-.App header .navbar-desktop .navbar-active-highlight[data-blobstate="home"] {
+.App header .navbar-desktop .navbar-active-highlight[data-blobstate=home] {
   height: 41px;
   width: 41px;
   top: 7px;
   left: 6px;
 }
-
-.App header .navbar-desktop .navbar-active-highlight[data-blobstate="Fspect"] {
+.App header .navbar-desktop .navbar-active-highlight[data-blobstate=Fspect] {
   height: 37px;
   width: 70px;
   top: 9px;
   left: 64px;
 }
-
-.App header .navbar-desktop .navbar-active-highlight[data-blobstate="AboutMe"] {
+.App header .navbar-desktop .navbar-active-highlight[data-blobstate=AboutMe] {
   height: 37px;
   width: 102px;
   top: 9px;
   left: 142px;
 }
-
 .App header .navbar-desktop .navbar-content {
   position: absolute;
   z-index: 2;
   width: 100%;
   list-style-type: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   height: 55px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   margin: 0px;
   padding: 8px;
-  grid-gap: px;
 }
-
 .App header .navbar-desktop .navbar-content .navigation-route-img {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
 }
-
 .App header .navbar-desktop .navbar-content .navigation-route-img img {
   cursor: pointer;
   width: 37px;
   background-color: #121316;
   border-radius: 50px;
 }
-
 .App header .navbar-desktop .navbar-content .navigation {
   width: 100%;
   margin-left: 30px;
 }
-
 .App header .navbar-desktop .navbar-content .navigation ul {
   padding: 0;
   list-style-type: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   height: 55px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  align-items: center;
   gap: 30px;
 }
-
 .App header .navbar-desktop .navbar-content .navigation ul .navigation-route {
   white-space: nowrap;
   color: var(--color-grey);
   text-decoration: none;
-  -webkit-transition: all 0.4s;
   transition: all 0.4s;
 }
-
 .App header .navbar-desktop .navbar-content .navigation ul .navigation-route:hover {
   cursor: pointer;
   color: var(--color-white);
 }
-
-.App header .navbar-desktop .navbar-content .account-action ul {
-  padding: 0px;
-  list-style-type: none;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.App header .navbar-desktop .navbar-content .account-action ul li {
-  padding: 10px;
-  -webkit-transition: all 0.4s;
-  transition: all 0.4s;
-}
-
-.App header .navbar-desktop .navbar-content .account-action ul li:hover {
-  cursor: pointer;
-}
-
-.App header .navbar-desktop .navbar-content .account-action ul .login-btn {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  background-color: var(--color-orange);
-  border-radius: 20px;
-  word-break: keep-all;
-  text-align: center;
-  color: var(--color-white);
-  height: 37px;
-  padding: 1em;
-}
-
-.App header .navbar-desktop .navbar-content .account-action ul .signin-btn {
-  margin-right: 8px;
-  border: solid 1px;
-  text-align: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  min-width: 90px;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-radius: 20px;
-  height: 37px;
-  padding: 1em;
-}
-
 .App .gallery-container {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
 }
-
 .App .gallery-container .foreground {
   width: 150vw;
   height: 150vh;
 }
-
 .App .gallery-container .middleground {
   width: 120vw;
   height: 120vh;
 }
-
 .App .gallery-container .background {
   width: 120vw;
   height: 120vh;
-}
-/*# sourceMappingURL=index.css.map */
+}/*# sourceMappingURL=index.css.map */
