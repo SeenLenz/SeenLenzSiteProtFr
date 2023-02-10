@@ -11,20 +11,25 @@ export function Navbar() {
   const [from, setFrom] = useState({ opacity: 1 });
   const boxRef = useRef();
   const [blobState, setblobState] = useState("AboutMe");
+  const spring = {
+    type: "spring",
+    stiffness: 700,
+    damping: 30,
+  };
 
   return (
     <>
       {isMobile ? (
         <header>
           <div className="navbar-desktop">
-            <div className="navbar-animation-wrapper">
+            <motion.div className="navbar-animation-wrapper">
               <motion.div
                 className="navbar-active-highlight"
                 data-blobstate={blobState}
                 layout
                 transition={spring}
               ></motion.div>
-            </div>
+            </motion.div>
             <ul className="navbar-content">
               <li className="logo">
                 <NavLink to="/" className="navigation-route-img">
@@ -42,11 +47,13 @@ export function Navbar() {
               <motion.div
                 className="navbar-active-highlight"
                 data-blobstate={blobState}
+                layout
+                transition={spring}
               ></motion.div>
             </div>
             <ul className="navbar-content">
               <li className="logo">
-                <NavLink
+                <a
                   to="/"
                   className="navigation-route-img"
                   onClick={(e) => {
@@ -55,12 +62,12 @@ export function Navbar() {
                 >
                   {" "}
                   <img src={signature} alt="React Logo" />
-                </NavLink>
+                </a>
               </li>
               <li className="navigation">
                 <ul>
                   <li>
-                    <NavLink
+                    <a
                       to="/Fspect"
                       className="navigation-route"
                       onClick={(e) => {
@@ -68,11 +75,11 @@ export function Navbar() {
                       }}
                     >
                       Fspect
-                    </NavLink>
+                    </a>
                   </li>
                   <li>
                     {" "}
-                    <NavLink
+                    <a
                       to="/AboutMe"
                       className="navigation-route"
                       onClick={(e) => {
@@ -80,7 +87,7 @@ export function Navbar() {
                       }}
                     >
                       Aboute me
-                    </NavLink>
+                    </a>
                   </li>
                 </ul>
               </li>

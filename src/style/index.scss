@@ -14,6 +14,7 @@ body {
   --color-grey: #757678;
   --color-light-grey: #d0d0d0;
   --color-white: #e5e6e6;
+  --color-orange: rgb(255, 136, 0);
   --height-navbar-inner: 38px;
 }
 *,
@@ -44,34 +45,31 @@ body {
       // backdrop-filter: blur(20px);
       color: var(--color-grey);
 
-      .navbar-active-highlight[data-blobstate="home"] {
-        align-self: center;
+      .navbar-active-highlight {
         border-radius: 50px;
         position: absolute;
-        background-color: red;
+        background-color: var(--color-orange);
+      }
+
+      .navbar-active-highlight[data-blobstate="home"] {
         height: 41px;
         width: 41px;
-        transform: translateY(7px) translateX(6px);
+        top: 7px;
+        left: 6px;
       }
 
       .navbar-active-highlight[data-blobstate="Fspect"] {
-        align-self: center;
-        border-radius: 50px;
-        position: absolute;
-        background-color: green;
         height: 37px;
         width: 70px;
-        transform: translateY(9px) translateX(64px);
+        top: 9px;
+        left: 64px;
       }
 
       .navbar-active-highlight[data-blobstate="AboutMe"] {
-        align-self: center;
-        border-radius: 50px;
-        position: absolute;
-        background-color: blue;
         height: 37px;
         width: 102px;
-        transform: translateY(9px) translateX(142px);
+        top: 9px;
+        left: 142px;
       }
 
       .navbar-content {
@@ -92,6 +90,7 @@ body {
           align-items: center;
 
           img {
+            cursor: pointer;
             width: 37px;
             background-color: #121316;
             border-radius: 50px;
@@ -137,7 +136,7 @@ body {
             .login-btn {
               display: flex;
               align-items: center;
-              background-color: rgb(255, 136, 0);
+              background-color: var(--color-orange);
               border-radius: 20px;
               word-break: keep-all;
               text-align: center;

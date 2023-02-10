@@ -15,19 +15,22 @@ body {
   --color-grey: #757678;
   --color-light-grey: #d0d0d0;
   --color-white: #e5e6e6;
+  --color-orange: rgb(255, 136, 0);
   --height-navbar-inner: 38px;
 }
 
 *,
 *::after,
 *::before {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .App {
   height: 100%;
   width: 100%;
 }
+
 .App header {
   width: 100%;
   height: 55px;
@@ -35,6 +38,7 @@ body {
   padding: 0px 20px 0px 20px;
   position: fixed;
 }
+
 .App header .navbar-desktop {
   margin: auto;
   height: 55px;
@@ -45,93 +49,127 @@ body {
   background-color: var(--color-light-black);
   color: var(--color-grey);
 }
-.App header .navbar-desktop .navbar-active-highlight[data-blobstate=home] {
-  align-self: center;
+
+.App header .navbar-desktop .navbar-active-highlight {
   border-radius: 50px;
   position: absolute;
-  background-color: red;
+  background-color: var(--color-orange);
+}
+
+.App header .navbar-desktop .navbar-active-highlight[data-blobstate="home"] {
   height: 41px;
   width: 41px;
-  transform: translateY(7px) translateX(6px);
+  top: 7px;
+  left: 6px;
 }
-.App header .navbar-desktop .navbar-active-highlight[data-blobstate=Fspect] {
-  align-self: center;
-  border-radius: 50px;
-  position: absolute;
-  background-color: green;
+
+.App header .navbar-desktop .navbar-active-highlight[data-blobstate="Fspect"] {
   height: 37px;
   width: 70px;
-  transform: translateY(9px) translateX(64px);
+  top: 9px;
+  left: 64px;
 }
-.App header .navbar-desktop .navbar-active-highlight[data-blobstate=AboutMe] {
-  align-self: center;
-  border-radius: 50px;
-  position: absolute;
-  background-color: blue;
+
+.App header .navbar-desktop .navbar-active-highlight[data-blobstate="AboutMe"] {
   height: 37px;
   width: 102px;
-  transform: translateY(9px) translateX(142px);
+  top: 9px;
+  left: 142px;
 }
+
 .App header .navbar-desktop .navbar-content {
   position: absolute;
   z-index: 2;
   width: 100%;
   list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 55px;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin: 0px;
   padding: 8px;
   grid-gap: px;
 }
+
 .App header .navbar-desktop .navbar-content .navigation-route-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .App header .navbar-desktop .navbar-content .navigation-route-img img {
+  cursor: pointer;
   width: 37px;
   background-color: #121316;
   border-radius: 50px;
 }
+
 .App header .navbar-desktop .navbar-content .navigation {
   width: 100%;
   margin-left: 30px;
 }
+
 .App header .navbar-desktop .navbar-content .navigation ul {
   padding: 0;
   list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 55px;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 30px;
 }
+
 .App header .navbar-desktop .navbar-content .navigation ul .navigation-route {
   white-space: nowrap;
   color: var(--color-grey);
   text-decoration: none;
+  -webkit-transition: all 0.4s;
   transition: all 0.4s;
 }
+
 .App header .navbar-desktop .navbar-content .navigation ul .navigation-route:hover {
   cursor: pointer;
   color: var(--color-white);
 }
+
 .App header .navbar-desktop .navbar-content .account-action ul {
   padding: 0px;
   list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
+
 .App header .navbar-desktop .navbar-content .account-action ul li {
   padding: 10px;
+  -webkit-transition: all 0.4s;
   transition: all 0.4s;
 }
+
 .App header .navbar-desktop .navbar-content .account-action ul li:hover {
   cursor: pointer;
 }
+
 .App header .navbar-desktop .navbar-content .account-action ul .login-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  background-color: rgb(255, 136, 0);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: var(--color-orange);
   border-radius: 20px;
   word-break: keep-all;
   text-align: center;
@@ -139,31 +177,41 @@ body {
   height: 37px;
   padding: 1em;
 }
+
 .App header .navbar-desktop .navbar-content .account-action ul .signin-btn {
   margin-right: 8px;
   border: solid 1px;
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   min-width: 90px;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-radius: 20px;
   height: 37px;
   padding: 1em;
 }
+
 .App .gallery-container {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
 }
+
 .App .gallery-container .foreground {
   width: 150vw;
   height: 150vh;
 }
+
 .App .gallery-container .middleground {
   width: 120vw;
   height: 120vh;
 }
+
 .App .gallery-container .background {
   width: 120vw;
   height: 120vh;
-}/*# sourceMappingURL=index.css.map */
+}
+/*# sourceMappingURL=index.css.map */
