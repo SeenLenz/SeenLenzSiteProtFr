@@ -11,24 +11,77 @@ body {
 :root {
   --color-black: #121316;
   --color-light-black: #1d1e20;
-  --color-dark-grey: #1d1f22;
+  --color-dark-grey: #28282a;
   --color-grey: #757678;
   --color-light-grey: #d0d0d0;
   --color-white: #e5e6e6;
-  --color-orange: rgb(255, 136, 0);
+  --color-orange: #ff891a;
   --height-navbar-inner: 38px;
 }
 
 *,
 *::after,
 *::before {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .App {
-  height: 100%;
-  width: 100%;
+  height: 100vh;
+  width: 100vw;
 }
+
+.App button {
+  height: 28px;
+  font-family: "Roboto";
+  color: white;
+  background-color: transparent;
+  border: none;
+}
+
+.App .trial {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+.App .trial .box {
+  position: absolute;
+  z-index: -1;
+  top: 0px;
+  left: 0px;
+  width: 38px;
+  height: 38px;
+  border-radius: 27.5px;
+  background-color: orange;
+}
+
+.App .trial .row2 {
+  height: 55px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .App header {
   width: 100%;
   height: 55px;
@@ -36,21 +89,32 @@ body {
   padding: 0px 20px 0px 20px;
   position: fixed;
 }
+
 .App header .account-action ul {
   padding: 0px;
   list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
+
 .App header .account-action ul li {
   padding: 10px;
+  -webkit-transition: all 0.4s;
   transition: all 0.4s;
 }
+
 .App header .account-action ul li:hover {
   cursor: pointer;
 }
+
 .App header .account-action ul .login-btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: var(--color-orange);
   border-radius: 20px;
   word-break: keep-all;
@@ -59,17 +123,23 @@ body {
   height: 37px;
   padding: 1em;
 }
+
 .App header .account-action ul .signin-btn {
   margin-right: 8px;
   border: solid 1px;
   text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   min-width: 90px;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-radius: 20px;
   height: 37px;
   padding: 1em;
 }
+
 .App header .navbar-mobile {
   margin: auto;
   height: 55px;
@@ -80,33 +150,52 @@ body {
   background-color: var(--color-light-black);
   color: var(--color-grey);
 }
+
 .App header .navbar-mobile .navbar-content {
   position: absolute;
   z-index: 2;
   width: 100%;
   list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 55px;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin: 0px;
   padding: 8px;
 }
+
 .App header .navbar-mobile .navbar-content .navigation-route-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .App header .navbar-mobile .navbar-content .navigation-route-img img {
   cursor: pointer;
   width: 37px;
   background-color: #121316;
   border-radius: 50px;
 }
+
 .App header .navbar-mobile .navbar-content .navbar-hamburger {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
+
 .App header .navbar-mobile .navbar-content .navbar-hamburger .menu {
   height: 37px;
   width: 37px;
@@ -114,6 +203,7 @@ body {
   background-color: purple;
   margin-left: 8px;
 }
+
 .App header .navbar-desktop {
   margin: auto;
   height: 55px;
@@ -121,90 +211,225 @@ body {
   border-radius: 50px;
   position: relative;
   font-weight: 500;
-  background-color: var(--color-light-black);
+  background-color: #1d1e20c3;
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
   color: var(--color-grey);
 }
+
 .App header .navbar-desktop .navbar-active-highlight {
   border-radius: 50px;
   position: absolute;
   background-color: var(--color-orange);
 }
-.App header .navbar-desktop .navbar-active-highlight[data-blobstate=home] {
+
+.App header .navbar-desktop .navbar-active-highlight[data-blobstate="home"] {
   height: 41px;
   width: 41px;
   top: 7px;
   left: 6px;
 }
-.App header .navbar-desktop .navbar-active-highlight[data-blobstate=Fspect] {
+
+.App header .navbar-desktop .navbar-active-highlight[data-blobstate="Fspect"] {
   height: 37px;
   width: 70px;
   top: 9px;
   left: 64px;
 }
-.App header .navbar-desktop .navbar-active-highlight[data-blobstate=AboutMe] {
+
+.App header .navbar-desktop .navbar-active-highlight[data-blobstate="AboutMe"] {
   height: 37px;
   width: 102px;
   top: 9px;
   left: 142px;
 }
+
 .App header .navbar-desktop .navbar-content {
   position: absolute;
   z-index: 2;
   width: 100%;
   list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 55px;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   margin: 0px;
   padding: 8px;
 }
+
 .App header .navbar-desktop .navbar-content .navigation-route-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
+
 .App header .navbar-desktop .navbar-content .navigation-route-img img {
   cursor: pointer;
   width: 37px;
   background-color: #121316;
   border-radius: 50px;
 }
+
 .App header .navbar-desktop .navbar-content .navigation {
   width: 100%;
   margin-left: 30px;
 }
+
 .App header .navbar-desktop .navbar-content .navigation ul {
   padding: 0;
   list-style-type: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 55px;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   gap: 30px;
 }
+
 .App header .navbar-desktop .navbar-content .navigation ul .navigation-route {
   white-space: nowrap;
   color: var(--color-grey);
   text-decoration: none;
+  -webkit-transition: all 0.4s;
   transition: all 0.4s;
 }
+
 .App header .navbar-desktop .navbar-content .navigation ul .navigation-route:hover {
   cursor: pointer;
   color: var(--color-white);
 }
+
 .App .gallery-container {
-  width: 100vw;
   height: 100vh;
+  width: 100vw;
+  margin: 0px;
+  position: relative;
   overflow: hidden;
 }
-.App .gallery-container .foreground {
-  width: 150vw;
-  height: 150vh;
+
+.App .gallery-container .gallery {
+  height: 140vh;
+  width: 140vw;
+  position: absolute;
 }
-.App .gallery-container .middleground {
-  width: 120vw;
-  height: 120vh;
+
+.App .gallery-container .tile {
+  border-radius: 1vmax;
+  position: absolute;
+  -webkit-transition: -webkit-transform 800ms ease;
+  transition: -webkit-transform 800ms ease;
+  transition: transform 800ms ease;
+  transition: transform 800ms ease, -webkit-transform 800ms ease;
 }
-.App .gallery-container .background {
-  width: 120vw;
-  height: 120vh;
-}/*# sourceMappingURL=index.css.map */
+
+.App .gallery-container .tile:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.App .gallery-container .tile:hover > img {
+  opacity: 1;
+  -webkit-transform: scale(1.01);
+          transform: scale(1.01);
+}
+
+.App .gallery-container .tile > img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: inherit;
+  opacity: 0;
+  -webkit-transition: opacity 800ms ease, -webkit-transform 800ms ease;
+  transition: opacity 800ms ease, -webkit-transform 800ms ease;
+  transition: opacity 800ms ease, transform 800ms ease;
+  transition: opacity 800ms ease, transform 800ms ease, -webkit-transform 800ms ease;
+}
+
+.App .gallery-container .tile:nth-child(1) {
+  background-color: #ffee58;
+  height: 14%;
+  width: 20%;
+  left: 5%;
+  top: 5%;
+}
+
+.App .gallery-container .tile:nth-child(2) {
+  background-color: #42a5f5;
+  height: 24%;
+  width: 14%;
+  left: 42%;
+  top: 12%;
+}
+
+.App .gallery-container .tile:nth-child(3) {
+  background-color: #ef5350;
+  height: 18%;
+  width: 16%;
+  left: 12%;
+  top: 34%;
+}
+
+.App .gallery-container .tile:nth-child(4) {
+  background-color: #66bb6a;
+  height: 14%;
+  width: 12%;
+  left: 45%;
+  top: 48%;
+}
+
+.App .gallery-container .tile:nth-child(5) {
+  background-color: #ab47bc;
+  height: 16%;
+  width: 32%;
+  left: 8%;
+  top: 70%;
+}
+
+.App .gallery-container .tile:nth-child(6) {
+  background-color: #ffa726;
+  height: 24%;
+  width: 24%;
+  left: 68%;
+  top: 8%;
+}
+
+.App .gallery-container .tile:nth-child(7) {
+  background-color: #3f51b5;
+  height: 16%;
+  width: 20%;
+  left: 50%;
+  top: 74%;
+}
+
+.App .gallery-container .tile:nth-child(8) {
+  background-color: #8d6e63;
+  height: 24%;
+  width: 18%;
+  left: 72%;
+  top: 42%;
+}
+
+.App .gallery-container .tile:nth-child(9) {
+  background-color: #fafafa;
+  height: 10%;
+  width: 8%;
+  left: 84%;
+  top: 84%;
+}
+
+.App .gallery-container[data-navigate="true"] {
+  right: 1920px;
+}
+/*# sourceMappingURL=index.css.map */

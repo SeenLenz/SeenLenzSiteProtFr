@@ -4,6 +4,7 @@ import { Route } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import { Router, Routes } from "react-router-dom";
 import { Gallery } from "./components/Gallery";
+import { Trial } from "./components/Trial";
 
 export const loginContext = createContext();
 export const mobileContext = createContext();
@@ -16,18 +17,19 @@ function App() {
       setisMobile(window.innerWidth < 500);
     } else {
       setisMobile(window.innerWidth < 570);
-    }
+    } 
   });
 
   return (
     <loginContext.Provider value={[loggedIn, setloggedIn]}>
       <mobileContext.Provider value={isMobile}>
         <div className="App">
+          {/* <Trial /> */}
           <BrowserRouter>
-            <Navbar />
             <Routes>
               <Route path="/" element={<Gallery />} />
             </Routes>
+            <Navbar />
           </BrowserRouter>
         </div>
       </mobileContext.Provider>

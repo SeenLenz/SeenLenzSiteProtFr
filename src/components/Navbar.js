@@ -7,10 +7,7 @@ import { motion, Variants, spring } from "framer-motion";
 export function Navbar() {
   const [loggedIn, setloggedIn] = useContext(loginContext);
   const isMobile = useContext(mobileContext);
-  const [to, setTo] = useState({ opacity: 0 });
-  const [from, setFrom] = useState({ opacity: 1 });
-  const boxRef = useRef();
-  const [blobState, setblobState] = useState("AboutMe");
+  const [blobState, setblobState] = useState("home");
 
   const spring = {
     type: "spring",
