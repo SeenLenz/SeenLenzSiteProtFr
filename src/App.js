@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Router, Routes } from "react-router-dom";
 import { Gallery } from "./components/Gallery";
 import { Trial } from "./components/Trial";
+import { NNavbar } from "./components/NNavbar";
 
 export const loginContext = createContext();
 export const mobileContext = createContext();
@@ -27,9 +28,10 @@ function App() {
           {/* <Trial /> */}
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<Gallery />} />
+              {/* <Route path="/" element={<Gallery />} />
+              <Route path="/fspect" element={<Trial />} /> */}
             </Routes>
-            <Navbar />
+            <NNavbar />
           </BrowserRouter>
         </div>
       </mobileContext.Provider>
