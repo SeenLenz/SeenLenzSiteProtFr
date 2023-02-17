@@ -18,7 +18,7 @@ function App() {
       setisMobile(window.innerWidth < 500);
     } else {
       setisMobile(window.innerWidth < 570);
-    } 
+    }
   });
 
   return (

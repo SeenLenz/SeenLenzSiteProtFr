@@ -1,4 +1,10 @@
-import { useContext, useState, useRef, useLayoutEffect } from "react";
+import {
+  useEffect,
+  useContext,
+  useState,
+  useRef,
+  useLayoutEffect,
+} from "react";
 import { loginContext, mobileContext } from "../App";
 import signature from "../img/signature.png";
 import { NavLink } from "react-router-dom";
@@ -12,17 +18,29 @@ export function NNavbar() {
   const [top, setTop] = useState(0);
   const [width, setWidth] = useState(25);
   const [height, setHeight] = useState(25);
+  const [currentNav, setcurrentNav] = useState();
+
+  useEffect(() => {
+    window.addEventListener("resize", (e) => {
+      if (window.innerWidth < 940) {
+        document.querySelector();
+      }
+    });
+  }, []);
 
   function EventSetBlob(e, offsetx = 0, offsety = 0, height = 38) {
+    setcurrentNav(`${e.target.classList[0]}`);
+    console.log(currentNav);
     setLeft(
-      (Number(e.currentTarget.getBoundingClientRect().left) -
-        e.currentTarget.offsetWidth / 6 )-
-        document.querySelector(".nnavbar-desktop").getBoundingClientRect().x + 9
+      Number(e.currentTarget.getBoundingClientRect().left) -
+        e.currentTarget.offsetWidth / 6 -
+        document.querySelector(".nnavbar-desktop").getBoundingClientRect().x +
+        9
     );
     setTop(
-    (Number(e.currentTarget.getBoundingClientRect().top) -
-        e.currentTarget.offsetHeight / 6)-
-        document.querySelector(".nnavbar-desktop").getBoundingClientRect().y 
+      Number(e.currentTarget.getBoundingClientRect().top) -
+        e.currentTarget.offsetHeight / 6 -
+        document.querySelector(".nnavbar-desktop").getBoundingClientRect().y
     );
     setWidth(e.currentTarget.offsetWidth);
     setHeight(height);
@@ -32,7 +50,7 @@ export function NNavbar() {
     <>
       {isMobile ? (
         <header>
-          <div className="navbar-mobile">
+          <div className="navbar-mobile ">
             <motion.div className="navbar-animation-wrapper"></motion.div>
             <ul className="navbar-content"></ul>
           </div>
@@ -49,6 +67,7 @@ export function NNavbar() {
             <ul className="navbar-content">
               <li>
                 <button
+                  className="home"
                   onClick={(e) => {
                     EventSetBlob(e);
                     console.log(
@@ -58,34 +77,52 @@ export function NNavbar() {
                     );
                   }}
                 >
-                  asdasd
+                  home
+                </button>
+              </li>{" "}
+              <li>
+                <button
+                  className="aboutme"
+                  onClick={(e) => {
+                    EventSetBlob(e);
+                    console.log(
+                      document
+                        .querySelector(".nnavbar-desktop")
+                        .getBoundingClientRect()
+                    );
+                  }}
+                >
+                  aboutme
+                </button>
+              </li>{" "}
+              <li>
+                <button
+                  className="portfolio"
+                  onClick={(e) => {
+                    EventSetBlob(e);
+                    console.log(
+                      document
+                        .querySelector(".nnavbar-desktop")
+                        .getBoundingClientRect()
+                    );
+                  }}
+                >
+                  portfolio
                 </button>
               </li>
               <li>
                 <button
+                  className="sclenz"
                   onClick={(e) => {
                     EventSetBlob(e);
+                    console.log(
+                      document
+                        .querySelector(".nnavbar-desktop")
+                        .getBoundingClientRect()
+                    );
                   }}
                 >
-                  asdasd
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={(e) => {
-                    EventSetBlob(e);
-                  }}
-                >
-                  asdasd
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={(e) => {
-                    EventSetBlob(e);
-                  }}
-                >
-                  asdasd
+                  sclenz
                 </button>
               </li>
             </ul>
