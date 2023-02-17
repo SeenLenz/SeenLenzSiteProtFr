@@ -14,36 +14,62 @@ export function NNavbar() {
   const [loggedIn, setloggedIn] = useContext(loginContext);
   const isMobile = useContext(mobileContext);
   const [blobState, setblobState] = useState("home");
-  const [left, setLeft] = useState(0);
-  const [top, setTop] = useState(0);
+  const [currentNav, setcurrentNav] = useState("home");
   const [width, setWidth] = useState(25);
   const [height, setHeight] = useState(25);
-  const [currentNav, setcurrentNav] = useState();
+  const [left, setLeft] = useState();
+  const [top, setTop] = useState(0);
+  const [opacity, setOpacity] = useState(0);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.addEventListener("resize", (e) => {
-      if (window.innerWidth < 940) {
-        document.querySelector();
-      }
+      console.log("asdasd");
+      let target = document.querySelector(`.${currentNav}`);
+      let blob = document.querySelector(`.blob`);
+      setLeft(
+        Number(target.getBoundingClientRect().left) -
+          target.offsetWidth / 6 -
+          document.querySelector(".nnavbar-desktop").getBoundingClientRect().x +
+          8
+      );
     });
+  }, [currentNav]);
+
+  useLayoutEffect((e) => {
+    let target = document.querySelector(`.home`);
+    setLeft(
+      Number(target.getBoundingClientRect().left) -
+        target.offsetWidth / 6 -
+        document.querySelector(".nnavbar-desktop").getBoundingClientRect().x +
+        8
+    );
+    setTop(
+      Number(target.getBoundingClientRect().top) -
+        target.offsetHeight / 6 -
+        document.querySelector(".nnavbar-desktop").getBoundingClientRect().y -
+        0.5
+    );
+    setWidth(target.offsetWidth + 2);
+    setHeight(target.offsetHeight * 1.4);
+    setOpacity(1);
   }, []);
 
-  function EventSetBlob(e, offsetx = 0, offsety = 0, height = 38) {
+  function EventSetBlob(e) {
     setcurrentNav(`${e.target.classList[0]}`);
-    console.log(currentNav);
     setLeft(
       Number(e.currentTarget.getBoundingClientRect().left) -
         e.currentTarget.offsetWidth / 6 -
         document.querySelector(".nnavbar-desktop").getBoundingClientRect().x +
-        9
+        8
     );
     setTop(
       Number(e.currentTarget.getBoundingClientRect().top) -
         e.currentTarget.offsetHeight / 6 -
-        document.querySelector(".nnavbar-desktop").getBoundingClientRect().y
+        document.querySelector(".nnavbar-desktop").getBoundingClientRect().y -
+        0.5
     );
-    setWidth(e.currentTarget.offsetWidth);
-    setHeight(height);
+    setWidth(e.currentTarget.offsetWidth + 2);
+    setHeight(e.currentTarget.offsetHeight * 1.4);
   }
 
   return (
@@ -60,7 +86,9 @@ export function NNavbar() {
           <div className="nnavbar-desktop">
             <motion.div className="navbar-animation-wrapper">
               <motion.div
-                animate={{ left, top, width, height }}
+                transition={{ type: "linear" }}
+                initial={{ opacity: 0 }}
+                animate={{ left, top, width, height, opacity }}
                 className="blob"
               ></motion.div>
             </motion.div>
