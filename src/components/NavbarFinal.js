@@ -19,6 +19,8 @@ export function NavbarFinal() {
   const [left, setLeft] = useState(0);
   const [opacity, setOpacity] = useState(0);
 
+  const activeStyle = { color: "white" };
+
   useLayoutEffect(() => {
     window.addEventListener("resize", (e) => {
       let target = document.querySelector(`.${currentNav}`);
@@ -26,10 +28,8 @@ export function NavbarFinal() {
       let blob = document.querySelector(`.blob`);
       setLeft(
         Number(target.getBoundingClientRect().left) -
-          target.offsetWidth / 6 -
           document.querySelector(".f-navbar-desktop").getBoundingClientRect()
-            .x +
-          8
+            .left
       );
     });
   }, [currentNav]);
@@ -38,9 +38,8 @@ export function NavbarFinal() {
     let target = document.querySelector(`.home`);
     setLeft(
       Number(target.getBoundingClientRect().left) -
-        target.offsetWidth / 6 -
-        document.querySelector(".f-navbar-desktop").getBoundingClientRect().x +
-        8
+        document.querySelector(".f-navbar-desktop").getBoundingClientRect().left
+
     );
     setWidth(target.offsetWidth + 2);
     setOpacity(1);
@@ -53,10 +52,8 @@ export function NavbarFinal() {
       .getBoundingClientRect();
     setLeft(
       Number(e.currentTarget.getBoundingClientRect().left) -
-        e.currentTarget.offsetWidth / 6 -
-        navbar.x +
-        10 +
-        4.25
+
+        navbar.left 
     );
     setWidth(e.currentTarget.offsetWidth + 2);
   }
@@ -108,38 +105,47 @@ export function NavbarFinal() {
                 </div>
               </li>
               <li className="page-navigation">
-                <a
+                <NavLink to="/"
                   className="home NavOption"
                   onClick={(e) => {
                     EventSetBlob(e);
-                  }}
+                  }}style={({ isActive }) =>
+                  isActive ? activeStyle : undefined
+                }
                 >
                   Home
-                </a>
-                <a
+                </NavLink>
+                <NavLink to="/features"
                   className="features NavOption"
                   onClick={(e) => {
                     EventSetBlob(e);
-                  }}
+                  }}style={({ isActive }) =>
+                  isActive ? activeStyle : undefined
+                }
                 >
                   Features
-                </a>
-                <a
+                </NavLink>
+                <NavLink to="/download"
                   className="download NavOption"
                   onClick={(e) => {
                     EventSetBlob(e);
-                  }}
+                  }}style={({ isActive }) =>
+                  isActive ? activeStyle : undefined
+                }
                 >
                   Download
-                </a>
-                <a
+                </NavLink>
+                <NavLink to="/api"
                   className="api NavOption"
                   onClick={(e) => {
                     EventSetBlob(e);
                   }}
+                  style={({ isActive }) =>
+                        isActive ? activeStyle : undefined
+                      }
                 >
                   Api
-                </a>
+                </NavLink>
               </li>
               {loggedIn ? (
                 <li className="account-action">

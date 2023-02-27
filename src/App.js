@@ -1,11 +1,9 @@
-import { Navbar } from "./components/Navbar";
 import React, { createContext, useState } from "react";
 import { Route } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import { Router, Routes } from "react-router-dom";
 import { Gallery } from "./components/Gallery";
 import { Trial } from "./components/Trial";
-import { NNavbar } from "./components/NNavbar";
 import { NavbarFinal } from "./components/NavbarFinal";
 
 export const loginContext = createContext();
