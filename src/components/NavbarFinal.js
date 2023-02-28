@@ -15,8 +15,9 @@ export function NavbarFinal() {
   const isMobile = useContext(mobileContext);
   const [blobState, setblobState] = useState("home");
   const [currentNav, setcurrentNav] = useState("home");
-  const [width, setWidth] = useState(25);
-  const [left, setLeft] = useState(0);
+  const [blob_width, setBlob_Width] = useState(25);
+  const [blob_left, setBlob_Left] = useState(0);
+  const [subpage_height, setSubpage_Height] = useState(0);
   const [opacity, setOpacity] = useState(0);
 
   const activeStyle = { color: "white" };
@@ -26,7 +27,7 @@ export function NavbarFinal() {
       let target = document.querySelector(`.${currentNav}`);
       console.log(target);
       let blob = document.querySelector(`.blob`);
-      setLeft(
+      setBlob_Left(
         Number(target.getBoundingClientRect().left) -
           document.querySelector(".f-navbar-desktop").getBoundingClientRect()
             .left
@@ -36,12 +37,11 @@ export function NavbarFinal() {
 
   useLayoutEffect((e) => {
     let target = document.querySelector(`.home`);
-    setLeft(
+    setBlob_Left(
       Number(target.getBoundingClientRect().left) -
         document.querySelector(".f-navbar-desktop").getBoundingClientRect().left
-
     );
-    setWidth(target.offsetWidth + 2);
+    setBlob_Width(target.offsetWidth + 2);
     setOpacity(1);
   }, []);
 
@@ -50,12 +50,10 @@ export function NavbarFinal() {
     let navbar = document
       .querySelector(".f-navbar-desktop")
       .getBoundingClientRect();
-    setLeft(
-      Number(e.currentTarget.getBoundingClientRect().left) -
-
-        navbar.left 
+    setBlob_Left(
+      Number(e.currentTarget.getBoundingClientRect().left) - navbar.left
     );
-    setWidth(e.currentTarget.offsetWidth + 2);
+    setBlob_Width(e.currentTarget.offsetWidth + 2);
   }
 
   return (
@@ -72,12 +70,20 @@ export function NavbarFinal() {
           <div className="f-navbar-desktop">
             <motion.div className="navbar-animation-wrapper">
               <motion.div
-                transition={{ type: "linear" }}
-                animate={{ left, width }}
+                animate={{ left: blob_left, width: blob_width }}
                 className="blob"
               ></motion.div>
             </motion.div>
-            <motion.div className="subpage-navigation-dropdown">
+            <motion.div
+              animate={{ height: subpage_height }}
+              onMouseLeave={(e) => {
+                setSubpage_Height(0);
+              }}
+              onMouseEnter={(e) => {
+                setSubpage_Height(194.5);
+              }}
+              className="subpage-navigation-dropdown"
+            >
               <div className="subpage-navigation-option">
                 <div className="subpage-navigation-option-icon"></div>
                 <div className="subpage-navigation-option-title">Fspect</div>
@@ -97,6 +103,15 @@ export function NavbarFinal() {
                 <div className="subpage-navigation-option-title">SCLenz</div>
               </div>
             </motion.div>
+            <div
+              className="subpage-collisionbox"
+              onMouseLeave={(e) => {
+                setSubpage_Height(0);
+              }}
+              onMouseEnter={(e) => {
+                setSubpage_Height(194.5);
+              }}
+            ></div>
             <ul className="navbar-content">
               <li className="subpage-navigation">
                 <div className="subpage-navigation-icon"></div>
@@ -105,44 +120,43 @@ export function NavbarFinal() {
                 </div>
               </li>
               <li className="page-navigation">
-                <NavLink to="/"
+                <NavLink
+                  to="/"
                   className="home NavOption"
                   onClick={(e) => {
                     EventSetBlob(e);
-                  }}style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
+                  }}
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
                 >
                   Home
                 </NavLink>
-                <NavLink to="/features"
+                <NavLink
+                  to="/features"
                   className="features NavOption"
                   onClick={(e) => {
                     EventSetBlob(e);
-                  }}style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
+                  }}
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
                 >
                   Features
                 </NavLink>
-                <NavLink to="/download"
+                <NavLink
+                  to="/download"
                   className="download NavOption"
                   onClick={(e) => {
                     EventSetBlob(e);
-                  }}style={({ isActive }) =>
-                  isActive ? activeStyle : undefined
-                }
+                  }}
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
                 >
                   Download
                 </NavLink>
-                <NavLink to="/api"
+                <NavLink
+                  to="/api"
                   className="api NavOption"
                   onClick={(e) => {
                     EventSetBlob(e);
                   }}
-                  style={({ isActive }) =>
-                        isActive ? activeStyle : undefined
-                      }
+                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
                 >
                   Api
                 </NavLink>

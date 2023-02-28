@@ -182,12 +182,22 @@ body {
         height: 100%;
       }
 
+      .subpage-collisionbox {
+        background-color: rgba(255, 255, 255, 0.46);
+        width: 170px;
+        height: 101px;
+        position: absolute;
+        z-index: 21;
+        top: 8.5px;
+        left: 8.5px;
+      }
+
       .blob {
         background-color: var(--color-orange);
         z-index: 2;
         width: 25px;
         height: 25px;
-        position: absolute;   
+        position: absolute;
         border-radius: 26.5px;
         top: 8.5px;
         left: 20px;
@@ -203,7 +213,8 @@ body {
         background-color: #1d1e20c3;
         position: absolute;
         top: 63.5px;
-        z-index: 2;
+        z-index: 0;
+        overflow: hidden;
 
         .subpage-navigation-option {
           margin: 8.5px;
@@ -263,6 +274,7 @@ body {
             align-items: center;
             justify-content: flex-start;
             padding-left: 8px;
+            cursor: pointer;
             color: var(--color-orange);
           }
         }
@@ -284,7 +296,7 @@ body {
             justify-content: center;
             border-radius: 27.5px;
             text-decoration: none;
-            transition: all .2s;
+            transition: all 0.2s;
             color: var(--color-grey);
           }
         }
