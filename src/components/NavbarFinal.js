@@ -6,7 +6,11 @@ import {
   useLayoutEffect,
 } from "react";
 import { loginContext, mobileContext } from "../App";
-import signature from "../img/signature.png";
+import Portfolio from "../img/PPictures/Portfolio.svg";
+import Fspect from "../img/PPictures/Fspect.svg";
+import SCLenz from "../img/PPictures/SCLenz.svg";
+import RstyJingle from "../img/PPictures/RstyJingle.svg";
+import MusicPlayer from "../img/PPictures/MusicPlayer.svg";
 import { NavLink } from "react-router-dom";
 import { motion, Variants, spring, delay } from "framer-motion";
 
@@ -25,15 +29,65 @@ export function NavbarFinal() {
 
   const navigationtree = {
     Portfolio: {
-      to: "/portfolio",
-      img: "path/to/image",
-      element: "",
-      pages: {},
+      to: "/Portfolio",
+      img: "../img/PPictures/Portfolio.svg",
+      title: "Portfolio",
+      active: false,
+      pages: [
+        ["asd", "asdasdasd"],
+        ["asd", "asdasdasd"],
+        ["asd", "asdasdasd"],
+        ["asd", "asdasdasd"],
+      ],
     },
-    Fspect: {},
-    SCLenz: {},
-    RstyJingle: {},
-    MusicPlayer: {},
+    Fspect: {
+      to: "/Fspect",
+      img: "../img/PPictures/Fspect.svg",
+      title: "Fspect",
+      active: false,
+      pages: [
+        ["asd", "asdasdasd"],
+        ["asd", "asdasdasd"],
+        ["asd", "asdasdasd"],
+        ["asd", "asdasdasd"],
+      ],
+    },
+    SCLenz: {
+      to: "/SCLenz",
+      img: "../img/PPictures/SCLenz.svg",
+      title: "SCLenz",
+      active: false,
+      pages: [
+        ["asd", "asdasdasd"],
+        ["asd", "asdasdasd"],
+        ["asd", "asdasdasd"],
+        ["asd", "asdasdasd"],
+      ],
+    },
+    RstyJingle: {
+      to: "/RstyJingle",
+      img: "../img/PPictures/RstyJingle.svg",
+      title: "RstyJingle",
+      active: false,
+      pages: [
+        ["asd", "asdasdasd"],
+        ["asd", "asdasdasd"],
+        ["asd", "asdasdasd"],
+        ["asd", "asdasdasd"],
+      ],
+    },
+    MusicPlayer: {
+      to: "/MusicPlayer",
+      img: "../img/PPictures/MusicPlayer.svg",
+      title: "Music Player",
+      active: true,
+      pages: [
+        ["asd", "asdasdasd"],
+        ["asd", "asdasdasd"],
+        ["asd", "asdasdasd"],
+        ["asd", "asdasdasd"],
+      ],
+    },
   };
 
   const activeStyle = { color: "white" };
@@ -109,32 +163,57 @@ export function NavbarFinal() {
                 setdropdownHeightState(249.5);
               }}
             >
-              <div className="subpage-navigation-container">
+              <div className="subpage-navigation">
                 <motion.div
-                  className="subpage-navigation"
-                  transition={{ delay: 0.15, type: "spring" }}
+                  className="subpage-navigation-container"
+                  transition={{ type: "spring" }}
                   animate={{ bottom: titleBottom }}
                 >
-                  <div className="subpage-navigation-icon"></div>
-                  <div className="subpage-navigation-title">
-                    <div></div>MusicPlayer
+                  <div className="subpage-navigation-icon">
+                    <img className="PPicture" src={Portfolio}></img>
                   </div>
+                  <div className="subpage-navigation-title">MusicPlayer</div>
                 </motion.div>
               </div>
               <motion.div
                 animate={{ height: subpage_height }}
                 className="subpage-navigation-dropdown"
               >
-                <div className="subpage-navigation-option-container">
+                <div
+                  className="subpage-navigation-option-container"
+                  onClick={(e) => {
+                    // SubpageOptionSwitch(e);
+                    // document.querySelector(".subpage-navigation-container");
+                    e.currentTarget.appendChild(
+                      <motion.div
+                        className="subpage-navigation-container"
+                        transition={{ type: "spring" }}
+                        animate={{ bottom: titleBottom }}
+                      >
+                        <div className="subpage-navigation-icon">
+                          <img
+                            className="PPicture"
+                            src={
+                              e.currentTarget.children[0].children[1]
+                                .textContent
+                            }
+                          ></img>
+                        </div>
+                        <div className="subpage-navigation-title">
+                          {e.currentTarget.children[0].children[1].textContent}
+                        </div>
+                      </motion.div>
+                    );
+                  }}
+                >
                   <motion.div
                     className="subpage-navigation-option"
-                    onClick={(e) => {
-                      SubpageOptionSwitch(e);
-                    }}
                     animate={{ bottom: optionBottom }}
-                    transition={{ delay: 0.08 }}
+                    transition={{ delay: 0.3, type: "spring" }}
                   >
-                    <div className="subpage-navigation-option-icon"></div>
+                    <div className="subpage-navigation-option-icon">
+                      <img className="PPicture" src={Fspect}></img>
+                    </div>
                     <div className="subpage-navigation-option-title">
                       Fspect
                     </div>
@@ -142,7 +221,9 @@ export function NavbarFinal() {
                 </div>
                 <div className="subpage-navigation-option-container">
                   <div className="subpage-navigation-option">
-                    <div className="subpage-navigation-option-icon"></div>
+                    <div className="subpage-navigation-option-icon">
+                      <img className="PPicture" src={RstyJingle}></img>
+                    </div>
                     <div className="subpage-navigation-option-title">
                       RstyJingle
                     </div>
@@ -150,7 +231,9 @@ export function NavbarFinal() {
                 </div>
                 <div className="subpage-navigation-option-container">
                   <div className="subpage-navigation-option">
-                    <div className="subpage-navigation-option-icon"></div>
+                    <div className="subpage-navigation-option-icon">
+                      <img className="PPicture" src={Portfolio}></img>
+                    </div>
                     <div className="subpage-navigation-option-title">
                       Portfolio
                     </div>
@@ -158,7 +241,9 @@ export function NavbarFinal() {
                 </div>
                 <div className="subpage-navigation-option-container">
                   <div className="subpage-navigation-option">
-                    <div className="subpage-navigation-option-icon"></div>
+                    <div className="subpage-navigation-option-icon">
+                      <img className="PPicture" src={SCLenz}></img>
+                    </div>
                     <div className="subpage-navigation-option-title">
                       SCLenz
                     </div>

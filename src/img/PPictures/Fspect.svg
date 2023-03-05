@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 111.111px;
+        fill: #ff891a;
+        text-anchor: middle;
+        font-family: "Vladimir Script";
+        text-transform: uppercase;
+      }
+    </style>
+  </defs>
+  <text id="f" class="cls-1" transform="translate(28.697 101.487) scale(1.074)"><tspan x="0">f</tspan></text>
+</svg>

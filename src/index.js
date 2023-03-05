@@ -9,7 +9,3 @@ root.render(
     <App />
   </React.StrictMode>
 );
-
-// window.addEventListener("mousemove", (e) => {
-//   console.log(`X: ${e.clientX} Y: ${e.clientY}`);
-// });
