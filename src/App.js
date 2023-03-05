@@ -5,6 +5,7 @@ import { Router, Routes } from "react-router-dom";
 import { Gallery } from "./components/Gallery";
 import { Trial } from "./components/Trial";
 import { NavbarFinal } from "./components/NavbarFinal";
+import ReorderComponent from "./components/ReorderComponent";
 
 export const loginContext = createContext();
 export const mobileContext = createContext();
@@ -29,6 +30,7 @@ function App() {
             <Routes>
               {/* <Route path="/" element={<Gallery />} />
               <Route path="/fspect" element={<Trial />} /> */}
+              <Route path="/reorder" element={<ReorderComponent />} />
             </Routes>
             <NavbarFinal />
           </BrowserRouter>

@@ -8,7 +8,7 @@ import {
 import { loginContext, mobileContext } from "../App";
 import signature from "../img/signature.png";
 import { NavLink } from "react-router-dom";
-import { motion, Variants, spring } from "framer-motion";
+import { motion, Variants, spring, delay } from "framer-motion";
 
 export function NavbarFinal() {
   const [loggedIn, setloggedIn] = useContext(loginContext);
@@ -19,8 +19,25 @@ export function NavbarFinal() {
   const [blob_left, setBlob_Left] = useState(0);
   const [subpage_height, setSubpage_Height] = useState(0);
   const [opacity, setOpacity] = useState(0);
+  const [dropdownHeightState, setdropdownHeightState] = useState(38);
+  const [optionBottom, setoptionBottom] = useState(0);
+  const [titleBottom, settitleBottom] = useState(0);
+
+  const navigationtree = {
+    Portfolio: {
+      to: "/portfolio",
+      img: "path/to/image",
+      element: "",
+      pages: {},
+    },
+    Fspect: {},
+    SCLenz: {},
+    RstyJingle: {},
+    MusicPlayer: {},
+  };
 
   const activeStyle = { color: "white" };
+  let dropdownHeight = { height: dropdownHeightState };
 
   useLayoutEffect(() => {
     window.addEventListener("resize", (e) => {
@@ -56,6 +73,11 @@ export function NavbarFinal() {
     setBlob_Width(e.currentTarget.offsetWidth + 2);
   }
 
+  function SubpageOptionSwitch(e) {
+    setoptionBottom(38);
+    settitleBottom(38);
+  }
+
   return (
     <>
       {isMobile ? (
@@ -75,50 +97,78 @@ export function NavbarFinal() {
               ></motion.div>
             </motion.div>
             <motion.div
-              animate={{ height: subpage_height }}
-              onMouseLeave={(e) => {
-                setSubpage_Height(0);
-              }}
-              onMouseEnter={(e) => {
-                setSubpage_Height(194.5);
-              }}
-              className="subpage-navigation-dropdown"
-            >
-              <div className="subpage-navigation-option">
-                <div className="subpage-navigation-option-icon"></div>
-                <div className="subpage-navigation-option-title">Fspect</div>
-              </div>
-              <div className="subpage-navigation-option">
-                <div className="subpage-navigation-option-icon"></div>
-                <div className="subpage-navigation-option-title">
-                  RstyJingle
-                </div>
-              </div>{" "}
-              <div className="subpage-navigation-option">
-                <div className="subpage-navigation-option-icon"></div>
-                <div className="subpage-navigation-option-title">Portfolio</div>
-              </div>{" "}
-              <div className="subpage-navigation-option">
-                <div className="subpage-navigation-option-icon"></div>
-                <div className="subpage-navigation-option-title">SCLenz</div>
-              </div>
-            </motion.div>
-            <div
               className="subpage-collisionbox"
+              style={dropdownHeight}
+              animate={{ height: dropdownHeight }}
               onMouseLeave={(e) => {
                 setSubpage_Height(0);
+                setdropdownHeightState(38);
               }}
               onMouseEnter={(e) => {
                 setSubpage_Height(194.5);
+                setdropdownHeightState(249.5);
               }}
-            ></div>
-            <ul className="navbar-content">
-              <li className="subpage-navigation">
-                <div className="subpage-navigation-icon"></div>
-                <div className="subpage-navigation-title">
-                  <div></div>MusicPlayer
+            >
+              <div className="subpage-navigation-container">
+                <motion.div
+                  className="subpage-navigation"
+                  transition={{ delay: 0.15, type: "spring" }}
+                  animate={{ bottom: titleBottom }}
+                >
+                  <div className="subpage-navigation-icon"></div>
+                  <div className="subpage-navigation-title">
+                    <div></div>MusicPlayer
+                  </div>
+                </motion.div>
+              </div>
+              <motion.div
+                animate={{ height: subpage_height }}
+                className="subpage-navigation-dropdown"
+              >
+                <div className="subpage-navigation-option-container">
+                  <motion.div
+                    className="subpage-navigation-option"
+                    onClick={(e) => {
+                      SubpageOptionSwitch(e);
+                    }}
+                    animate={{ bottom: optionBottom }}
+                    transition={{ delay: 0.08 }}
+                  >
+                    <div className="subpage-navigation-option-icon"></div>
+                    <div className="subpage-navigation-option-title">
+                      Fspect
+                    </div>
+                  </motion.div>
                 </div>
-              </li>
+                <div className="subpage-navigation-option-container">
+                  <div className="subpage-navigation-option">
+                    <div className="subpage-navigation-option-icon"></div>
+                    <div className="subpage-navigation-option-title">
+                      RstyJingle
+                    </div>
+                  </div>
+                </div>
+                <div className="subpage-navigation-option-container">
+                  <div className="subpage-navigation-option">
+                    <div className="subpage-navigation-option-icon"></div>
+                    <div className="subpage-navigation-option-title">
+                      Portfolio
+                    </div>
+                  </div>
+                </div>
+                <div className="subpage-navigation-option-container">
+                  <div className="subpage-navigation-option">
+                    <div className="subpage-navigation-option-icon"></div>
+                    <div className="subpage-navigation-option-title">
+                      SCLenz
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+
+            <ul className="navbar-content">
+              <li className="subpage-placeholder"></li>
               <li className="page-navigation">
                 <NavLink
                   to="/"
