@@ -1,7 +1,7 @@
 import { motion, Variants, spring } from "framer-motion";
 import React, { createContext, useState } from "react";
 
-export function Gallery() {
+export function Portfolio() {
   const [x, setx] = useState(0);
   const [y, sety] = useState(0);
 
