@@ -1,3 +1,7 @@
 export function FspectStats() {
-  return <></>;
+  return (
+    <>
+      <div className="AnimNavbar-container">aaasd</div>
+    </>
+  );
 }

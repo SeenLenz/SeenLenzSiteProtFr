@@ -1,3 +1,7 @@
 export function FspectWorks() {
-  return <></>;
+  return (
+    <>
+      <div className="AnimNavbar-container">aaaasd</div>
+    </>
+  );
 }

@@ -1,6 +1,6 @@
 import { useContext, useState, useRef, useLayoutEffect } from "react";
-import { loginContext, mobileContext } from "../App";
-import signature from "../img/signature.png";
+import { loginContext, mobileContext } from "../../App";
+import signature from "../../img/signature.png";
 import { NavLink } from "react-router-dom";
 import { motion, Variants, spring } from "framer-motion";
 

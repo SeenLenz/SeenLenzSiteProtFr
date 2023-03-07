@@ -133,9 +133,9 @@ export function NavbarFinal() {
                   animate={{ bottom: titleBottom }}
                 >
                   <div className="subpage-navigation-icon">
-                    <img className="PPicture" src={Portfolio}></img>
+                    <img className="PPicture" src={Fspect}></img>
                   </div>
-                  <div className="subpage-navigation-title">MusicPlayer</div>
+                  <div className="subpage-navigation-title">Fspect</div>
                 </motion.div>
               </div>
               <motion.div
@@ -175,10 +175,10 @@ export function NavbarFinal() {
                     transition={{ delay: 0.3, type: "spring" }}
                   >
                     <div className="subpage-navigation-option-icon">
-                      <img className="PPicture" src={Fspect}></img>
+                      <img className="PPicture" src={MusicPlayer}></img>
                     </div>
                     <div className="subpage-navigation-option-title">
-                      Fspect
+                      MusicPlayer
                     </div>
                   </motion.div>
                 </div>
@@ -219,7 +219,7 @@ export function NavbarFinal() {
               <li className="subpage-placeholder"></li>
               <li className="page-navigation">
                 <NavLink
-                  to="/"
+                  to="/Fspect/home"
                   className="home NavOption"
                   onClick={(e) => {
                     EventSetBlob(e);
@@ -229,34 +229,24 @@ export function NavbarFinal() {
                   Home
                 </NavLink>
                 <NavLink
-                  to="/features"
+                  to="/Fspect/statistics"
                   className="features NavOption"
                   onClick={(e) => {
                     EventSetBlob(e);
                   }}
                   style={({ isActive }) => (isActive ? activeStyle : undefined)}
                 >
-                  Features
+                  Statistics
                 </NavLink>
                 <NavLink
-                  to="/download"
-                  className="download NavOption"
-                  onClick={(e) => {
-                    EventSetBlob(e);
-                  }}
-                  style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                >
-                  Download
-                </NavLink>
-                <NavLink
-                  to="/api"
+                  to="/Fspect/works"
                   className="api NavOption"
                   onClick={(e) => {
                     EventSetBlob(e);
                   }}
                   style={({ isActive }) => (isActive ? activeStyle : undefined)}
                 >
-                  Api
+                  Works
                 </NavLink>
               </li>
               {loggedIn ? (

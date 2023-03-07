@@ -2,7 +2,7 @@ import React, { createContext, useState } from "react";
 import { Route } from "react-router";
 import { BrowserRouter } from "react-router-dom";
 import { Router, Routes } from "react-router-dom";
-import { Trial } from "./components/Trial";
+import { Trial } from "./components/Trial/Trial";
 import { NavbarFinal } from "./components/NavbarFinal";
 import ReorderComponent from "./components/ReorderComponent";
 
@@ -15,6 +15,7 @@ import { Fspect } from "./components/Fspect/Fspect";
 import { FspectHome } from "./components/Fspect/FspectHome";
 import { FspectWorks } from "./components/Fspect/FspectWorks";
 import { FspectStats } from "./components/Fspect/FspectStats";
+import { AnimNavbar } from "./components/Trial/AnimNavbar";
 
 export const loginContext = createContext();
 export const mobileContext = createContext();
@@ -37,17 +38,14 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/Fspect" element={<Fspect />}>
-                <Route path="/Fspect/home" element={<FspectHome />} />
-                <Route path="/Fspect/statistics" element={<FspectStats />} />
-                <Route path="/Fspect/works" element={<FspectWorks />} />
+                <Route path="home" element={<AnimNavbar />} />
+                <Route path="statistics" element={<FspectStats />} />
+                <Route path="works" element={<FspectWorks />} />
               </Route>
-              <Route path="/Portfolio" element={<Portfolio />}>
-                <Route path="/Portfolio/works" element={<PortfolioWorks />} />
-                <Route
-                  path="/Portfolio/aboutme"
-                  element={<PortfolioAboutme />}
-                />
-                <Route path="/Portfolio/cv" element={<PortfolioCV />} />
+              <Route path="/Portfolio" element={<Portfolio />} exact>
+                <Route path="works" element={<PortfolioWorks />} />
+                <Route path="aboutme" element={<PortfolioAboutme />} />
+                <Route path="cv" element={<PortfolioCV />} />
               </Route>
             </Routes>
             <NavbarFinal />
