@@ -30,12 +30,54 @@ body {
   height: 100vh;
   width: 100vw;
 
+  .AnimNavbar-container {
+    background-color: greenyellow;
+    position: relative;
+    top: 25%;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .buttons {
+      width: 100%;
+      background-color: tomato;
+      height: 10%;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: center;
+    }
+    .navbar {
+      width: 100%;
+      background-color: darkcyan;
+      height: 10%;
+
+      .navbar-wrapper {
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+
+        a {
+          text-decoration: none;
+          color: black;
+          position: relative;
+        }
+      }
+    }
+  }
+
   button {
     height: 28px;
     font-family: "Roboto";
     color: white;
     background-color: transparent;
     border: none;
+    cursor: pointer;
   }
 
   .trial {
@@ -249,7 +291,7 @@ body {
 
         .subpage-navigation-dropdown {
           width: 178.5px;
-          height: 0px;
+          height: 220px;
           border-radius: 27.5px;
           backdrop-filter: blur(20px);
           background-color: #1d1e20c3;
