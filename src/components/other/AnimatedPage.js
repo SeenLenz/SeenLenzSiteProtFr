@@ -1,9 +1,9 @@
 import { motion, variants } from "framer-motion";
 
 const asd = {
-  beginning: () => ({ y: window.innerHeight }),
-  middle: () => ({ y: 0 }),
-  end: () => ({ y: -window.innerHeight }),
+  beginning: () => ({ x: window.innerWidth }),
+  middle: () => ({ x: 0 }),
+  end: () => ({ x: -window.innerWidth }),
 };
 
 export function AnimatedPage({ children }) {

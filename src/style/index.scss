@@ -14,6 +14,7 @@ body {
   --color-black: #121316;
   --color-light-black: #1d1e20;
   --color-dark-grey: #28282a;
+  --color-dark-grey-alpha: #28282a7d;
   --color-grey: #757678;
   --color-light-grey: #d0d0d0;
   --color-white: #e5e6e6;
@@ -117,43 +118,33 @@ body {
       align-items: center;
     }
   }
+
   .subpage-place {
-    background-color: rgba(170, 170, 170, 0.385);
     width: 100%;
     height: 55px;
     position: fixed;
-    top: 81px;
-
-    .subpage-place-wrapper {
-      margin: auto;
+    top: 89.5px;
+    display: flex;
+    font-weight: 500;
+    .buffer {
       height: 55px;
-      max-width: 900px;
-      border-radius: 50px;
-      position: relative;
-      font-weight: 500;
-      background-color: #1d1e20c3;
-      backdrop-filter: blur(20px);
-      color: var(--color-grey);
+      max-width: calc((100% - 900px) / 2);
+      flex-grow: 1;
     }
-  }
-
-  header {
-    width: 100%;
-    height: 55px;
-    top: 26px;
-    padding: 0px 20px 0px 20px;
-    position: fixed;
-
+    @media screen and (max-width: 940px) {
+      .buffer {
+        width: 20px;
+        max-width: 20px;
+      }
+    }
     .subpage-navigation-dropdown {
       width: 178.5px;
       height: 0;
       border-radius: 27.5px;
       backdrop-filter: blur(20px);
       background-color: #1d1e20c3;
-      position: absolute;
-      top: 55px;
-      z-index: 0;
       overflow: hidden;
+
       .subpage-navigation-option-container {
         overflow: hidden;
         height: 38px;
@@ -175,7 +166,11 @@ body {
             width: 38px;
             height: 38px;
             border-radius: 27.5px;
-            background-color: rgba(172, 172, 172, 0.47);
+            background-color: rgba(156, 156, 156, 0.104);
+            img {
+              width: 38px;
+              height: 38px;
+            }
           }
 
           .subpage-navigation-option-title {
@@ -184,11 +179,20 @@ body {
             align-items: center;
             justify-content: flex-start;
             padding-left: 8px;
+            color: var(--color-grey);
           }
         }
       }
     }
+  }
 
+  header {
+    width: 100%;
+    height: 55px;
+    top: 26px;
+    padding: 0px 20px 0px 20px;
+    position: fixed;
+    font-weight: 500;
     .account-action {
       ul {
         padding: 0px;
@@ -236,7 +240,7 @@ body {
       max-width: 900px;
       border-radius: 50px;
       position: relative;
-      font-weight: 500;
+
       background-color: var(--color-light-black);
       color: var(--color-grey);
 
@@ -322,7 +326,6 @@ body {
         position: absolute;
         z-index: 12;
         border-radius: 27.5px;
-        background-color: rgba(0, 51, 255, 0.282);
         top: 8.5px;
 
         .subpage-navigation {
@@ -335,7 +338,7 @@ body {
 
           justify-content: space-between;
           overflow: hidden;
-          background-color: var(--color-dark-grey);
+          background-color: var(--color-dark-grey-alpha);
 
           .subpage-navigation-container {
             position: absolute;
@@ -346,7 +349,7 @@ body {
             justify-content: space-between;
 
             .subpage-navigation-icon {
-              background-color: rgba(172, 172, 172, 0.123);
+              background-color: rgba(156, 156, 156, 0.067);
               width: 38px;
               height: 38px;
               border-radius: 27.5px;

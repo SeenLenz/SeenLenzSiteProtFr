@@ -14,12 +14,17 @@ import MusicPlayer from "../img/PPictures/MusicPlayer.svg";
 import { NavLink } from "react-router-dom";
 import { motion, Variants, spring, delay } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
+import { useLocation } from "react-router-dom";
+import { navtreeContext } from "../App";
 
 export function NavbarFinal() {
+  const location = useLocation();
+  const [navTree, setnavTree] = useContext(navtreeContext);
   const [loggedIn, setloggedIn] = useContext(loginContext);
   const isMobile = useContext(mobileContext);
-  const [blobState, setblobState] = useState("home");
-  const [currentNav, setcurrentNav] = useState("home");
+  const [blobState, setblobState] = useState(
+    location.pathname.split("/").pop()
+  );
   const [blob_width, setBlob_Width] = useState(25);
   const [blob_left, setBlob_Left] = useState(0);
   const [subpage_height, setSubpage_Height] = useState(0);
@@ -28,39 +33,12 @@ export function NavbarFinal() {
   const [optionBottom, setoptionBottom] = useState(0);
   const [titleBottom, settitleBottom] = useState(0);
 
-  const navigationtree = {
-    Portfolio: {
-      to: "/Portfolio",
-      img: "../img/PPictures/Portfolio.svg",
-      title: "Portfolio",
-      active: false,
-      pages: [
-        ["Works", "/works"],
-        ["About me", "/aboutme"],
-        ["CV", "/cv"],
-      ],
-    },
-
-    Fspect: {
-      to: "/Fspect",
-      img: "../img/PPictures/Fspect.svg",
-      title: "Fspect",
-      active: false,
-      pages: [
-        ["Home", "/home"],
-        ["Stats", "/statistics"],
-        ["Api", "/api"],
-      ],
-    },
-  };
-
   const activeStyle = { color: "white" };
   let dropdownHeight = { height: dropdownHeightState };
 
   useLayoutEffect(() => {
     window.addEventListener("resize", (e) => {
-      let target = document.querySelector(`.${currentNav}`);
-      console.log(target);
+      let target = document.querySelector(`.${blobState}`);
       let blob = document.querySelector(`.blob`);
       setBlob_Left(
         Number(target.getBoundingClientRect().left) -
@@ -68,10 +46,13 @@ export function NavbarFinal() {
             .left
       );
     });
-  }, [currentNav]);
+  }, [blobState]);
 
   useLayoutEffect((e) => {
-    let target = document.querySelector(`.home`);
+    setblobState(`${location.pathname.split("/").pop()}`);
+    setblobState(`${location.pathname.split("/").pop()}`);
+    console.log(`.${blobState}`);
+    let target = document.querySelector(`.${blobState}`);
     setBlob_Left(
       Number(target.getBoundingClientRect().left) -
         document.querySelector(".f-navbar-desktop").getBoundingClientRect().left
@@ -81,7 +62,7 @@ export function NavbarFinal() {
   }, []);
 
   function EventSetBlob(e) {
-    setcurrentNav(`${e.target.classList[0]}`);
+    setblobState(`${e.target.classList[0]}`);
     let navbar = document
       .querySelector(".f-navbar-desktop")
       .getBoundingClientRect();
@@ -156,7 +137,7 @@ export function NavbarFinal() {
                 </NavLink>
                 <NavLink
                   to="/Fspect/statistics"
-                  className="features NavOption"
+                  className="statistics NavOption"
                   onClick={(e) => {
                     EventSetBlob(e);
                   }}
@@ -166,7 +147,7 @@ export function NavbarFinal() {
                 </NavLink>
                 <NavLink
                   to="/Fspect/works"
-                  className="api NavOption"
+                  className="works NavOption"
                   onClick={(e) => {
                     EventSetBlob(e);
                   }}
@@ -186,80 +167,82 @@ export function NavbarFinal() {
               )}
             </ul>
           </div>
-          <motion.div
-            animate={{ height: subpage_height }}
-            className="subpage-navigation-dropdown"
-          >
-            <div
-              className="subpage-navigation-option-container"
-              onClick={(e) => {
-                // SubpageOptionSwitch(e);
-                // document.querySelector(".subpage-navigation-container");
-                e.currentTarget.appendChild(
-                  <motion.div
-                    className="subpage-navigation-container"
-                    transition={{ type: "spring" }}
-                    animate={{ bottom: titleBottom }}
-                  >
-                    <div className="subpage-navigation-icon">
-                      <img
-                        className="PPicture"
-                        src={
-                          e.currentTarget.children[0].children[1].textContent
-                        }
-                      ></img>
-                    </div>
-                    <div className="subpage-navigation-title">
-                      {e.currentTarget.children[0].children[1].textContent}
-                    </div>
-                  </motion.div>
-                );
-              }}
-            >
-              <motion.div
-                className="subpage-navigation-option"
-                animate={{ bottom: optionBottom }}
-                transition={{ delay: 0.3, type: "spring" }}
-              >
-                <div className="subpage-navigation-option-icon">
-                  <img className="PPicture" src={MusicPlayer}></img>
-                </div>
-                <div className="subpage-navigation-option-title">
-                  MusicPlayer
-                </div>
-              </motion.div>
-            </div>
-            <div className="subpage-navigation-option-container">
-              <div className="subpage-navigation-option">
-                <div className="subpage-navigation-option-icon">
-                  <img className="PPicture" src={RstyJingle}></img>
-                </div>
-                <div className="subpage-navigation-option-title">
-                  RstyJingle
-                </div>
-              </div>
-            </div>
-            <div className="subpage-navigation-option-container">
-              <div className="subpage-navigation-option">
-                <div className="subpage-navigation-option-icon">
-                  <img className="PPicture" src={Portfolio}></img>
-                </div>
-                <div className="subpage-navigation-option-title">Portfolio</div>
-              </div>
-            </div>
-            <div className="subpage-navigation-option-container">
-              <div className="subpage-navigation-option">
-                <div className="subpage-navigation-option-icon">
-                  <img className="PPicture" src={SCLenz}></img>
-                </div>
-                <div className="subpage-navigation-option-title">SCLenz</div>
-              </div>
-            </div>
-          </motion.div>
         </header>
       )}
       <div className="subpage-place">
-        <div className="subpage-place-wrapper"></div>
+        <div className="buffer"></div>
+        <motion.div
+          animate={{ height: subpage_height }}
+          className="subpage-navigation-dropdown"
+          onMouseLeave={(e) => {
+            setSubpage_Height(0);
+            setdropdownHeightState(38);
+          }}
+          onMouseEnter={(e) => {
+            setSubpage_Height(194.5);
+            setdropdownHeightState(249.5);
+          }}
+        >
+          <div
+            className="subpage-navigation-option-container"
+            onClick={(e) => {
+              // SubpageOptionSwitch(e);
+              // document.querySelector(".subpage-navigation-container");
+              e.currentTarget.appendChild(
+                <motion.div
+                  className="subpage-navigation-container"
+                  transition={{ type: "spring" }}
+                  animate={{ bottom: titleBottom }}
+                >
+                  <div className="subpage-navigation-icon">
+                    <img
+                      className="PPicture"
+                      src={e.currentTarget.children[0].children[1].textContent}
+                    ></img>
+                  </div>
+                  <div className="subpage-navigation-title">
+                    {e.currentTarget.children[0].children[1].textContent}
+                  </div>
+                </motion.div>
+              );
+            }}
+          >
+            <motion.div
+              className="subpage-navigation-option"
+              animate={{ bottom: optionBottom }}
+              transition={{ delay: 0.3, type: "spring" }}
+            >
+              <div className="subpage-navigation-option-icon">
+                <img className="PPicture" src={MusicPlayer}></img>
+              </div>
+              <div className="subpage-navigation-option-title">MusicPlayer</div>
+            </motion.div>
+          </div>
+          <div className="subpage-navigation-option-container">
+            <div className="subpage-navigation-option">
+              <div className="subpage-navigation-option-icon">
+                <img className="PPicture" src={RstyJingle}></img>
+              </div>
+              <div className="subpage-navigation-option-title">RstyJingle</div>
+            </div>
+          </div>
+          <div className="subpage-navigation-option-container">
+            <div className="subpage-navigation-option">
+              <div className="subpage-navigation-option-icon">
+                <img className="PPicture" src={Portfolio}></img>
+              </div>
+              <div className="subpage-navigation-option-title">Portfolio</div>
+            </div>
+          </div>
+          <div className="subpage-navigation-option-container">
+            <div className="subpage-navigation-option">
+              <div className="subpage-navigation-option-icon">
+                <img className="PPicture" src={SCLenz}></img>
+              </div>
+              <div className="subpage-navigation-option-title">SCLenz</div>
+            </div>
+          </div>
+        </motion.div>
       </div>
     </>
   );
