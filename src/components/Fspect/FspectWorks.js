@@ -1,7 +1,9 @@
+import { motion, AnimatePresence } from "framer-motion";
+import { AnimatedPage } from "../other/AnimatedPage";
 export function FspectWorks() {
   return (
-    <>
-      <div className="AnimNavbar-container">FspectWorks</div>
-    </>
+    <AnimatedPage>
+      <div>FspectWorks</div>
+    </AnimatedPage>
   );
 }

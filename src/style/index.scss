@@ -7,6 +7,7 @@ body {
   background-image: url("../img/tile_2.1.png");
   background-size: 80px;
   min-width: 500px;
+  overflow: hidden;
 }
 
 :root {
@@ -25,7 +26,16 @@ body {
 *::before {
   box-sizing: border-box;
 }
-
+.blurtest {
+  width: 100px;
+  height: 100px;
+  backdrop-filter: blur(13px);
+  border-radius: 27.5px;
+  position: absolute;
+  top: 480px;
+  left: 500px;
+  background-color: #12131625;
+}
 .App {
   height: 100vh;
   width: 100vw;
@@ -107,6 +117,25 @@ body {
       align-items: center;
     }
   }
+  .subpage-place {
+    background-color: rgba(170, 170, 170, 0.385);
+    width: 100%;
+    height: 55px;
+    position: fixed;
+    top: 81px;
+
+    .subpage-place-wrapper {
+      margin: auto;
+      height: 55px;
+      max-width: 900px;
+      border-radius: 50px;
+      position: relative;
+      font-weight: 500;
+      background-color: #1d1e20c3;
+      backdrop-filter: blur(20px);
+      color: var(--color-grey);
+    }
+  }
 
   header {
     width: 100%;
@@ -114,6 +143,51 @@ body {
     top: 26px;
     padding: 0px 20px 0px 20px;
     position: fixed;
+
+    .subpage-navigation-dropdown {
+      width: 178.5px;
+      height: 0;
+      border-radius: 27.5px;
+      backdrop-filter: blur(20px);
+      background-color: #1d1e20c3;
+      position: absolute;
+      top: 55px;
+      z-index: 0;
+      overflow: hidden;
+      .subpage-navigation-option-container {
+        overflow: hidden;
+        height: 38px;
+        border-radius: 27.5px;
+        margin-top: 8.5px;
+        margin-right: 8.5px;
+        position: relative;
+
+        .subpage-navigation-option {
+          height: 38px;
+          border-radius: 27.5px;
+          display: flex;
+          justify-content: space-between;
+          left: 8.5px;
+          position: absolute;
+          cursor: pointer;
+
+          .subpage-navigation-option-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 27.5px;
+            background-color: rgba(172, 172, 172, 0.47);
+          }
+
+          .subpage-navigation-option-title {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 8px;
+          }
+        }
+      }
+    }
 
     .account-action {
       ul {
@@ -248,6 +322,7 @@ body {
         position: absolute;
         z-index: 12;
         border-radius: 27.5px;
+        background-color: rgba(0, 51, 255, 0.282);
         top: 8.5px;
 
         .subpage-navigation {
@@ -285,52 +360,6 @@ body {
               padding-left: 8px;
               cursor: pointer;
               color: var(--color-orange);
-            }
-          }
-        }
-
-        .subpage-navigation-dropdown {
-          width: 178.5px;
-          height: 220px;
-          border-radius: 27.5px;
-          backdrop-filter: blur(20px);
-          background-color: #1d1e20c3;
-          position: absolute;
-          top: 55px;
-          z-index: 0;
-          overflow: hidden;
-
-          .subpage-navigation-option-container {
-            overflow: hidden;
-            height: 38px;
-            border-radius: 27.5px;
-            margin-top: 8.5px;
-            margin-right: 8.5px;
-            position: relative;
-
-            .subpage-navigation-option {
-              height: 38px;
-              border-radius: 27.5px;
-              display: flex;
-              justify-content: space-between;
-              left: 8.5px;
-              position: absolute;
-              cursor: pointer;
-
-              .subpage-navigation-option-icon {
-                width: 38px;
-                height: 38px;
-                border-radius: 27.5px;
-                background-color: rgba(172, 172, 172, 0.47);
-              }
-
-              .subpage-navigation-option-title {
-                flex-grow: 1;
-                display: flex;
-                align-items: center;
-                justify-content: flex-start;
-                padding-left: 8px;
-              }
             }
           }
         }

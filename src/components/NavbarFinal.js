@@ -13,6 +13,7 @@ import RstyJingle from "../img/PPictures/RstyJingle.svg";
 import MusicPlayer from "../img/PPictures/MusicPlayer.svg";
 import { NavLink } from "react-router-dom";
 import { motion, Variants, spring, delay } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 
 export function NavbarFinal() {
   const [loggedIn, setloggedIn] = useContext(loginContext);
@@ -129,7 +130,7 @@ export function NavbarFinal() {
               <div className="subpage-navigation">
                 <motion.div
                   className="subpage-navigation-container"
-                  transition={{ type: "spring" }}
+                  transition={{ type: "ease" }}
                   animate={{ bottom: titleBottom }}
                 >
                   <div className="subpage-navigation-icon">
@@ -138,81 +139,6 @@ export function NavbarFinal() {
                   <div className="subpage-navigation-title">Fspect</div>
                 </motion.div>
               </div>
-              <motion.div
-                animate={{ height: subpage_height }}
-                className="subpage-navigation-dropdown"
-              >
-                <div
-                  className="subpage-navigation-option-container"
-                  onClick={(e) => {
-                    // SubpageOptionSwitch(e);
-                    // document.querySelector(".subpage-navigation-container");
-                    e.currentTarget.appendChild(
-                      <motion.div
-                        className="subpage-navigation-container"
-                        transition={{ type: "spring" }}
-                        animate={{ bottom: titleBottom }}
-                      >
-                        <div className="subpage-navigation-icon">
-                          <img
-                            className="PPicture"
-                            src={
-                              e.currentTarget.children[0].children[1]
-                                .textContent
-                            }
-                          ></img>
-                        </div>
-                        <div className="subpage-navigation-title">
-                          {e.currentTarget.children[0].children[1].textContent}
-                        </div>
-                      </motion.div>
-                    );
-                  }}
-                >
-                  <motion.div
-                    className="subpage-navigation-option"
-                    animate={{ bottom: optionBottom }}
-                    transition={{ delay: 0.3, type: "spring" }}
-                  >
-                    <div className="subpage-navigation-option-icon">
-                      <img className="PPicture" src={MusicPlayer}></img>
-                    </div>
-                    <div className="subpage-navigation-option-title">
-                      MusicPlayer
-                    </div>
-                  </motion.div>
-                </div>
-                <div className="subpage-navigation-option-container">
-                  <div className="subpage-navigation-option">
-                    <div className="subpage-navigation-option-icon">
-                      <img className="PPicture" src={RstyJingle}></img>
-                    </div>
-                    <div className="subpage-navigation-option-title">
-                      RstyJingle
-                    </div>
-                  </div>
-                </div>
-                <div className="subpage-navigation-option-container">
-                  <div className="subpage-navigation-option">
-                    <div className="subpage-navigation-option-icon">
-                      <img className="PPicture" src={Portfolio}></img>
-                    </div>
-                    <div className="subpage-navigation-option-title">
-                      Portfolio
-                    </div>
-                  </div>
-                </div>
-                <div className="subpage-navigation-option-container">
-                  <div className="subpage-navigation-option">
-                    <div className="subpage-navigation-option-icon">
-                      <img className="PPicture" src={SCLenz}></img>
-                    </div>
-                    <div className="subpage-navigation-option-title">
-                      SCLenz
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
             </motion.div>
 
             <ul className="navbar-content">
@@ -260,8 +186,81 @@ export function NavbarFinal() {
               )}
             </ul>
           </div>
+          <motion.div
+            animate={{ height: subpage_height }}
+            className="subpage-navigation-dropdown"
+          >
+            <div
+              className="subpage-navigation-option-container"
+              onClick={(e) => {
+                // SubpageOptionSwitch(e);
+                // document.querySelector(".subpage-navigation-container");
+                e.currentTarget.appendChild(
+                  <motion.div
+                    className="subpage-navigation-container"
+                    transition={{ type: "spring" }}
+                    animate={{ bottom: titleBottom }}
+                  >
+                    <div className="subpage-navigation-icon">
+                      <img
+                        className="PPicture"
+                        src={
+                          e.currentTarget.children[0].children[1].textContent
+                        }
+                      ></img>
+                    </div>
+                    <div className="subpage-navigation-title">
+                      {e.currentTarget.children[0].children[1].textContent}
+                    </div>
+                  </motion.div>
+                );
+              }}
+            >
+              <motion.div
+                className="subpage-navigation-option"
+                animate={{ bottom: optionBottom }}
+                transition={{ delay: 0.3, type: "spring" }}
+              >
+                <div className="subpage-navigation-option-icon">
+                  <img className="PPicture" src={MusicPlayer}></img>
+                </div>
+                <div className="subpage-navigation-option-title">
+                  MusicPlayer
+                </div>
+              </motion.div>
+            </div>
+            <div className="subpage-navigation-option-container">
+              <div className="subpage-navigation-option">
+                <div className="subpage-navigation-option-icon">
+                  <img className="PPicture" src={RstyJingle}></img>
+                </div>
+                <div className="subpage-navigation-option-title">
+                  RstyJingle
+                </div>
+              </div>
+            </div>
+            <div className="subpage-navigation-option-container">
+              <div className="subpage-navigation-option">
+                <div className="subpage-navigation-option-icon">
+                  <img className="PPicture" src={Portfolio}></img>
+                </div>
+                <div className="subpage-navigation-option-title">Portfolio</div>
+              </div>
+            </div>
+            <div className="subpage-navigation-option-container">
+              <div className="subpage-navigation-option">
+                <div className="subpage-navigation-option-icon">
+                  <img className="PPicture" src={SCLenz}></img>
+                </div>
+                <div className="subpage-navigation-option-title">SCLenz</div>
+              </div>
+            </div>
+          </motion.div>
         </header>
       )}
+      <div className="subpage-place">
+        <div className="subpage-place-wrapper"></div>
+      </div>
     </>
   );
 }
