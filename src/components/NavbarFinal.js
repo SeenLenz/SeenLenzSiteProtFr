@@ -16,8 +16,10 @@ import { motion, Variants, spring, delay } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import { navtreeContext } from "../App";
+import { leftContext } from "../App";
 
 export function NavbarFinal() {
+  const [left, setleft] = useState(false);
   const location = useLocation();
   const [navTree, setnavTree] = useContext(navtreeContext);
   const [loggedIn, setloggedIn] = useContext(loginContext);
@@ -62,7 +64,11 @@ export function NavbarFinal() {
   }, []);
 
   function EventSetBlob(e) {
-    setblobState(`${e.target.classList[0]}`);
+    console.log(e.currentTarget.id);
+    e.currentTarget.id > Number(document.querySelector(`.${blobState}`).id)
+      ? setleft(true)
+      : setleft(false);
+    console.log(left);
     let navbar = document
       .querySelector(".f-navbar-desktop")
       .getBoundingClientRect();
@@ -128,6 +134,7 @@ export function NavbarFinal() {
                 <NavLink
                   to="/Fspect/home"
                   className="home NavOption"
+                  id={1}
                   onClick={(e) => {
                     EventSetBlob(e);
                   }}
@@ -136,6 +143,7 @@ export function NavbarFinal() {
                   Home
                 </NavLink>
                 <NavLink
+                  id={2}
                   to="/Fspect/statistics"
                   className="statistics NavOption"
                   onClick={(e) => {
@@ -146,6 +154,7 @@ export function NavbarFinal() {
                   Statistics
                 </NavLink>
                 <NavLink
+                  id={3}
                   to="/Fspect/works"
                   className="works NavOption"
                   onClick={(e) => {

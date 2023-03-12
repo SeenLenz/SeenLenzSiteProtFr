@@ -1,18 +1,20 @@
 import { motion, variants } from "framer-motion";
-
-const asd = {
-  beginning: () => ({ x: window.innerWidth }),
-  middle: () => ({ x: 0 }),
-  end: () => ({ x: -window.innerWidth }),
-};
+import { leftContext } from "../../App";
+import { useState } from "react";
 
 export function AnimatedPage({ children }) {
+  const [left, setleft] = useState(leftContext);
+  const asd = {
+    beginning: () => ({ x: left ? -window.innerWidth : window.innerWidth }),
+    middle: () => ({ x: 0 }),
+    end: () => ({ x: left ? window.innerWidth : -window.innerWidth }),
+  };
+
   return (
     <motion.div
-      variants={asd}
-      initial="beginning"
-      animate="middle"
-      exit="end"
+      initial={{ x: left ? -window.innerWidth : window.innerWidth }}
+      animate={{ x: 0 }}
+      exit={{ x: left ? window.innerWidth : -window.innerWidth }}
       className="AnimNavbar-container"
     >
       {children}

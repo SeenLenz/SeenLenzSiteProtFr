@@ -23,10 +23,12 @@ import { useRoutes } from "react-router-dom";
 export const loginContext = createContext();
 export const mobileContext = createContext();
 export const navtreeContext = createContext();
+export const leftContext = createContext();
 
 function App() {
   const [loggedIn, setloggedIn] = useState(true);
   const [isMobile, setisMobile] = useState(window.innerWidth < 625);
+  const [left, setleft] = useState(false);
   const [navTree, setnavTree] = useState({
     Portfolio: {
       id: 1,
