@@ -16,7 +16,7 @@ import { motion, Variants, spring, delay } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import { navtreeContext } from "../App";
-import { leftContext } from "../App";
+import { leftContext } from "./other/AnimatedPage";
 
 export function NavbarFinal() {
   const location = useLocation();
@@ -26,6 +26,7 @@ export function NavbarFinal() {
   const [blobState, setblobState] = useState(
     location.pathname.split("/").pop()
   );
+  const [left, setleft] = useState(leftContext);
   const [blob_width, setBlob_Width] = useState(25);
   const [blob_left, setBlob_Left] = useState(0);
   const [subpage_height, setSubpage_Height] = useState(0);
@@ -51,7 +52,6 @@ export function NavbarFinal() {
 
   useLayoutEffect((e) => {
     setblobState(`${location.pathname.split("/").pop()}`);
-    setblobState(`${location.pathname.split("/").pop()}`);
     console.log(`.${blobState}`);
     let target = document.querySelector(`.${blobState}`);
     setBlob_Left(
@@ -63,11 +63,24 @@ export function NavbarFinal() {
   }, []);
 
   function EventSetBlob(e) {
-    // console.log(e.currentTarget.id);
-    // e.currentTarget.id > Number(document.querySelector(`.${blobState}`).id)
-    //   ? setleft(true)
-    //   : setleft(false);
-    // console.log(left);
+    console.log(
+      Number(e.currentTarget.id) <=
+        Number(document.querySelector(`.${blobState}`).id)
+    );
+
+    Number(e.currentTarget.id) <=
+    Number(document.querySelector(`.${blobState}`).id)
+      ? setleft(true)
+      : setleft(false);
+    // if (
+    //   Number(e.currentTarget.id) <=
+    //   Number(document.querySelector(`.${blobState}`).id)
+    // ) {
+    //   setleft(true);
+    // } else {
+    //   setleft(false);
+    // }
+
     let navbar = document
       .querySelector(".f-navbar-desktop")
       .getBoundingClientRect();
@@ -75,6 +88,7 @@ export function NavbarFinal() {
       Number(e.currentTarget.getBoundingClientRect().left) - navbar.left
     );
     setBlob_Width(e.currentTarget.offsetWidth + 2);
+    setblobState(e.currentTarget.textContent.toLowerCase());
   }
 
   function SubpageOptionSwitch(e) {
