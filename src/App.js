@@ -23,7 +23,6 @@ import { useRoutes } from "react-router-dom";
 export const loginContext = createContext();
 export const mobileContext = createContext();
 export const navtreeContext = createContext();
-export const leftContext = createContext();
 
 function App() {
   const [loggedIn, setloggedIn] = useState(true);
@@ -107,7 +106,7 @@ function App() {
       <mobileContext.Provider value={isMobile}>
         <navtreeContext.Provider value={[navTree, setnavTree]}>
           <div className="App">
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="sync">
               <Routes key={location.pathname} location={location}>
                 <Route path="/Fspect" element={<Fspect />}>
                   <Route path="home" element={<AnimNavbar />} />

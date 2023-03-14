@@ -19,7 +19,6 @@ import { navtreeContext } from "../App";
 import { leftContext } from "../App";
 
 export function NavbarFinal() {
-  const [left, setleft] = useState(false);
   const location = useLocation();
   const [navTree, setnavTree] = useContext(navtreeContext);
   const [loggedIn, setloggedIn] = useContext(loginContext);
@@ -64,11 +63,11 @@ export function NavbarFinal() {
   }, []);
 
   function EventSetBlob(e) {
-    console.log(e.currentTarget.id);
-    e.currentTarget.id > Number(document.querySelector(`.${blobState}`).id)
-      ? setleft(true)
-      : setleft(false);
-    console.log(left);
+    // console.log(e.currentTarget.id);
+    // e.currentTarget.id > Number(document.querySelector(`.${blobState}`).id)
+    //   ? setleft(true)
+    //   : setleft(false);
+    // console.log(left);
     let navbar = document
       .querySelector(".f-navbar-desktop")
       .getBoundingClientRect();
