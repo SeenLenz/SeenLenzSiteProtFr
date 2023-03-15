@@ -106,20 +106,18 @@ function App() {
       <mobileContext.Provider value={isMobile}>
         <navtreeContext.Provider value={[navTree, setnavTree]}>
           <div className="App">
-            <AnimatePresence mode="sync">
-              <Routes key={location.pathname} location={location}>
-                <Route path="/Fspect" element={<Fspect />}>
-                  <Route path="home" element={<AnimNavbar />} />
-                  <Route path="statistics" element={<FspectStats />} />
-                  <Route path="works" element={<FspectWorks />} />
-                </Route>
-                <Route path="/Portfolio" element={<Portfolio />} exact>
-                  <Route path="works" element={<PortfolioWorks />} />
-                  <Route path="aboutme" element={<PortfolioAboutme />} />
-                  <Route path="cv" element={<PortfolioCV />} />
-                </Route>
-              </Routes>
-            </AnimatePresence>
+            <Routes key={location.pathname} location={location}>
+              <Route path="/Fspect" element={<Fspect />}>
+                <Route path="home" element={<AnimNavbar />} />
+                <Route path="statistics" element={<FspectStats />} />
+                <Route path="works" element={<FspectWorks />} />
+              </Route>
+              <Route path="/Portfolio" element={<Portfolio />} exact>
+                <Route path="works" element={<PortfolioWorks />} />
+                <Route path="aboutme" element={<PortfolioAboutme />} />
+                <Route path="cv" element={<PortfolioCV />} />
+              </Route>
+            </Routes>
             <NavbarFinal />
           </div>
         </navtreeContext.Provider>

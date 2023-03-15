@@ -16,7 +16,6 @@ import { motion, Variants, spring, delay } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
 import { useLocation } from "react-router-dom";
 import { navtreeContext } from "../App";
-import { leftContext } from "./other/AnimatedPage";
 
 export function NavbarFinal() {
   const location = useLocation();
@@ -26,7 +25,6 @@ export function NavbarFinal() {
   const [blobState, setblobState] = useState(
     location.pathname.split("/").pop()
   );
-  const [left, setleft] = useState(leftContext);
   const [blob_width, setBlob_Width] = useState(25);
   const [blob_left, setBlob_Left] = useState(0);
   const [subpage_height, setSubpage_Height] = useState(0);
@@ -51,8 +49,6 @@ export function NavbarFinal() {
   }, [blobState]);
 
   useLayoutEffect((e) => {
-    setblobState(`${location.pathname.split("/").pop()}`);
-    console.log(`.${blobState}`);
     let target = document.querySelector(`.${blobState}`);
     setBlob_Left(
       Number(target.getBoundingClientRect().left) -
@@ -63,24 +59,6 @@ export function NavbarFinal() {
   }, []);
 
   function EventSetBlob(e) {
-    console.log(
-      Number(e.currentTarget.id) <=
-        Number(document.querySelector(`.${blobState}`).id)
-    );
-
-    Number(e.currentTarget.id) <=
-    Number(document.querySelector(`.${blobState}`).id)
-      ? setleft(true)
-      : setleft(false);
-    // if (
-    //   Number(e.currentTarget.id) <=
-    //   Number(document.querySelector(`.${blobState}`).id)
-    // ) {
-    //   setleft(true);
-    // } else {
-    //   setleft(false);
-    // }
-
     let navbar = document
       .querySelector(".f-navbar-desktop")
       .getBoundingClientRect();
@@ -88,8 +66,11 @@ export function NavbarFinal() {
       Number(e.currentTarget.getBoundingClientRect().left) - navbar.left
     );
     setBlob_Width(e.currentTarget.offsetWidth + 2);
-    setblobState(e.currentTarget.textContent.toLowerCase());
   }
+
+  useEffect(() => {
+    setblobState(`${location.pathname.split("/").pop()}`);
+  }, [location.pathname]);
 
   function SubpageOptionSwitch(e) {
     setoptionBottom(38);
@@ -147,16 +128,17 @@ export function NavbarFinal() {
                 <NavLink
                   to="/Fspect/home"
                   className="home NavOption"
-                  id={1}
+                  id={3}
                   onClick={(e) => {
                     EventSetBlob(e);
                   }}
                   style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                  value="home"
                 >
                   Home
                 </NavLink>
                 <NavLink
-                  id={2}
+                  id={4}
                   to="/Fspect/statistics"
                   className="statistics NavOption"
                   onClick={(e) => {
@@ -167,7 +149,7 @@ export function NavbarFinal() {
                   Statistics
                 </NavLink>
                 <NavLink
-                  id={3}
+                  id={5}
                   to="/Fspect/works"
                   className="works NavOption"
                   onClick={(e) => {
