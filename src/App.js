@@ -23,6 +23,7 @@ import { useRoutes } from "react-router-dom";
 export const loginContext = createContext();
 export const mobileContext = createContext();
 export const navtreeContext = createContext();
+export const leftContext = createContext();
 
 function App() {
   const [loggedIn, setloggedIn] = useState(true);
@@ -105,21 +106,25 @@ function App() {
     <loginContext.Provider value={[loggedIn, setloggedIn]}>
       <mobileContext.Provider value={isMobile}>
         <navtreeContext.Provider value={[navTree, setnavTree]}>
-          <div className="App">
-            <Routes key={location.pathname} location={location}>
-              <Route path="/Fspect" element={<Fspect />}>
-                <Route path="home" element={<AnimNavbar />} />
-                <Route path="statistics" element={<FspectStats />} />
-                <Route path="works" element={<FspectWorks />} />
-              </Route>
-              <Route path="/Portfolio" element={<Portfolio />} exact>
-                <Route path="works" element={<PortfolioWorks />} />
-                <Route path="aboutme" element={<PortfolioAboutme />} />
-                <Route path="cv" element={<PortfolioCV />} />
-              </Route>
-            </Routes>
-            <NavbarFinal />
-          </div>
+          <leftContext.Provider value={[left, setleft]}>
+            <div className="App">
+              <AnimatePresence mode="sync">
+                <Routes key={location.pathname} location={location}>
+                  <Route path="/Fspect" element={<Fspect />}>
+                    <Route path="home" element={<AnimNavbar />} />
+                    <Route path="statistics" element={<FspectStats />} />
+                    <Route path="works" element={<FspectWorks />} />
+                  </Route>
+                  <Route path="/Portfolio" element={<Portfolio />} exact>
+                    <Route path="works" element={<PortfolioWorks />} />
+                    <Route path="aboutme" element={<PortfolioAboutme />} />
+                    <Route path="cv" element={<PortfolioCV />} />
+                  </Route>
+                </Routes>
+              </AnimatePresence>
+              <NavbarFinal />
+            </div>
+          </leftContext.Provider>
         </navtreeContext.Provider>
       </mobileContext.Provider>
     </loginContext.Provider>
